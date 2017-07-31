@@ -1,0 +1,3 @@
+class Box < ApplicationRecord
+
+end

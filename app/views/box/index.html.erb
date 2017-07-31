@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>A사물함</h2>
+  <table>
+      <% @number.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path do %>
+                <input class = "but" type = "submit" name = "seatNumber" value = "A-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+  </table>
+  <h2>B사물함</h2>
+  <table>
+      <% @number.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path do %>
+                <input class = "but" type = "submit" name = "seatNumber" value = "B-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+  </table>
+</div>
