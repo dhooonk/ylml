@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
   def index
+    @head = true
     @user_admin = User.all.order('stuN ASC')
   end
 

@@ -1,27 +1,30 @@
+<div id="page-wrapper">
+    <div class="container container-fluid">
 
-<div class= "container">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    신청현황<small>application condition</small>
+                </h1>
   <%= flash[:notice] %>
   <%= flash[:caution] %>
-  <h1>신청현황</h1>
-  <table>
+  <table class="table table-condensed">
+
     <thead>
       <tr>
-        <th>이름</th>
-        <th>학번</th>
-        <th>이메일</th>
-        <th>신청한 사물함</th>
+        <th class="admin_index">이름</th>
+        <th class="admin_index">학번</th>
+        <th class="admin_index">이메일</th>
+        <th class="admin_index">신청한 사물함</th>
+        <th class="admin_index">삭제</th>
       </tr>
     </thead>
     <tbody>
       <% @user_admin.each do |u_i| %>
         <tr>
           <td>
-            <%= u_i.name %>&nbsp
-            <% if u_i.admin == true %>
-              <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete" %>
-            <% else %>
-              <%= link_to "[삭제]", admin_path(u_i.id), method: "delete" %>
-            <% end %>
+            <%= u_i.name %>
           </td>
           <td><%= u_i.stuN %></td>
           <td><%= u_i.email %></td>
@@ -30,6 +33,13 @@
           <% else %>
             <td><%= u_i.seatNumber %></td>
           <% end %>
+          <td>
+            <% if u_i.admin == true %>
+              <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete" %>
+            <% else %>
+              <%= link_to "[삭제]", admin_path(u_i.id), method: "delete" %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

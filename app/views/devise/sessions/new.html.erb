@@ -1,6 +1,7 @@
 <div class="container">
   <h2>로그인</h2>
 
+    <img src="assets/logo.gif" style="width:cover;">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :이메일 %><br />
@@ -9,7 +10,7 @@
 
     <div class="field">
       <%= f.label :비밀번호 %><br />
-      <%= f.password_field :password, autocomplete: "off", placeholder: "생년월일8자리" %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: "초기 생년월일8자리" %>
     </div>
 
     <% if devise_mapping.rememberable? -%>

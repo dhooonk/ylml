@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   def user_apply?
     if !current_user.seatNumber.nil?
       redirect_to :root
-      flash[:alert] = "사물함을 신청하셨습니다."
+
+      flash[:alert] = "사물함을 이미 신청하셨습니다."
     end
   end
 

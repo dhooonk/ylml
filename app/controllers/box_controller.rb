@@ -22,7 +22,8 @@ class BoxController < ApplicationController
     else
       current_user.seatNumber = params[:seatNumber]
       current_user.save
-      redirect_to new_box_path
+      redirect_to '/'
+      flash[:success] = "사물함이 신청되었습니다."
     end
   end
 
@@ -32,5 +33,7 @@ class BoxController < ApplicationController
     user.save
 
     redirect_to new_post_path
+
+    flash[:warning] = "사물함이 취소되었습니다."
   end
 end
