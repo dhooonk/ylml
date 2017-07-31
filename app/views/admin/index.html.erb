@@ -26,7 +26,11 @@
           <td>
             <%= u_i.name %>
           </td>
-          <td><%= u_i.stuN %></td>
+          <% if u_i.admin == true %>
+            <td>관리자</td>
+          <% else %>
+            <td><%= u_i.stuN %></td>
+          <% end %>
           <td><%= u_i.email %></td>
           <% if u_i.seatNumber == nil%>
             <td>미신청</td>
@@ -35,9 +39,9 @@
           <% end %>
           <td>
             <% if u_i.admin == true %>
-              <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete" %>
+              <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
             <% else %>
-              <%= link_to "[삭제]", admin_path(u_i.id), method: "delete" %>
+              <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
             <% end %>
           </td>
         </tr>

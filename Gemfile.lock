@@ -240,10 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
-=======
-  bootstrap-sass
->>>>>>> c37fac34a96ed6886fdcc9c4d25b20264cbf4e05
+
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
@@ -258,10 +255,8 @@ DEPENDENCIES
   rails_db
   sass-rails (~> 5.0)
   selenium-webdriver
-<<<<<<< HEAD
-=======
-  simple_form
->>>>>>> c37fac34a96ed6886fdcc9c4d25b20264cbf4e05
+
+
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
@@ -270,9 +265,5 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
 
-BUNDLED WITH
-<<<<<<< HEAD
-   1.15.2
-=======
+
    1.15.3
->>>>>>> c37fac34a96ed6886fdcc9c4d25b20264cbf4e05
