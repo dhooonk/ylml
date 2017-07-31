@@ -77,7 +77,7 @@
                       <li><%= link_to "사물함 신청", box_index_path %></li>
                     <% end %>
                   <% else %>
-                    <li><a href="/users/sign_in">Sign in</a></li>
+                    <li><a href="/users/sign_in">로그인</a></li>
                   <% end %>
                   <% if user_signed_in? %>
                     <li><%= link_to "로그아웃", destroy_user_session_path, method: "delete" %></li>

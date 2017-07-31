@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css);
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
 
@@ -21,17 +23,21 @@
    height:100px;
  }
 
+
   .new_html  {
    text-align: center;
  }
+
 
  table, th, td, tr {
    text-align: center;
  }
 
+
  .admin_index {
    text-align: center;
  }
+
 
  * {
    font-family: 'Nanum Gothic';
@@ -100,6 +106,12 @@ html {
     width: 100%;
     height: 100%;
 }
+
+
+center {
+ contents-align: center;
+}
+
 /*
 @media(min-width:767px) {
     .navbar {

@@ -19,10 +19,10 @@
   <%= form_tag import_csv_index_path, multipart: true do %>
   <span class="btn btn-large btn-default btn-file">
     파일선택
-    <%= file_field_tag :attachment %>
-</span>
-   <%= submit_tag "등록", :class => "btn btn-default" %>
-  <% end %>
+    <%= file_field_tag :file %>
+  </span>
+     <%= submit_tag "등록", :class => "btn btn-default" %>
+    <% end %>
   <br>
   <br>
   <h2>직접등록</h2>
