@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- 도훈이형 레이아웃 추가 -->
       <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Custom CSS -->
@@ -43,13 +42,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <% if current_page?(root_path)%>
                     <a class="navbar-brand page-scroll" href="#page-top">네자리내자리</a>
+                    <% else %>
+                    <a class="navbar-brand page-scroll" href="/posts#page-top">네자리내자리</a>
+                    <% end %>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
               <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+              <% if current_page?(root_path)%>
               <li class="hidden">
                   <a class="page-scroll" href="#page-top"></a>
               </li>
@@ -60,8 +64,16 @@
                   <a class="page-scroll" href="#services">이용방법</a>
               </li>
               <li>
-                  <a class="page-scroll" href="#contact">이용제휴</a>
+                  <a class="page-scroll" href="#contact">이용시설</a>
               </li>
+              <% else %>
+              <li class="hidden">
+                  <a class="page-scroll" href="/posts#page-top"></a>
+              </li>
+              <li><%= link_to "서비스", root_path(@root, :anchor => "about") %></li>
+              <li><%= link_to "이용방법", root_path(@root, :anchor => "services") %></li>
+              <li><%= link_to "문의", root_path(@root, :anchor => "contact") %></li>
+              <% end %>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><b class="caret"></b></a>
                 <ul class="dropdown-menu alert-dropdown">
@@ -69,7 +81,7 @@
                     <li>&nbsp&nbsp&nbsp&nbsp<strong><%= current_user.name %></strong>&nbsp님 안녕하세요.</li>
                   <% end %>
                   <% if user_signed_in? %>
-                    <li><%= link_to new_post_path do %>내정보<% end %></li>
+                    <li><%= link_to new_post_path do %>내 정보<% end %></li>
                     <% if user_admin? %>
                       <li><%= link_to "신청현황", admin_index_path %></li>
                       <li><%= link_to "학생등록", csv_index_path, method:"get" %></li>

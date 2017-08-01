@@ -7,6 +7,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'devise-i18n'
 gem 'nokogiri'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
