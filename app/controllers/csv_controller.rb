@@ -1,4 +1,6 @@
 class CsvController < ApplicationController
+  before_action :user_signed?
+  before_action :admin_not?
   def index
     @users = User.all
   end

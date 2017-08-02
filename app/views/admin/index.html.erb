@@ -1,51 +1,52 @@
-<div id="page-wrapper">
-    <div class="container container-fluid">
-
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    신청현황<small>application condition</small>
-                </h1>
-  <%= flash[:notice] %>
-  <%= flash[:caution] %>
-  <table class="table table-condensed">
-
-    <thead>
-      <tr>
-        <th class="admin_index">이름</th>
-        <th class="admin_index">학번</th>
-        <th class="admin_index">이메일</th>
-        <th class="admin_index">신청한 사물함</th>
-        <th class="admin_index">삭제</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user_admin.each do |u_i| %>
-        <tr>
-          <td>
-            <%= u_i.name %>
-          </td>
-          <% if u_i.admin == true %>
-            <td>관리자</td>
-          <% else %>
-            <td><%= u_i.stuN %></td>
-          <% end %>
-          <td><%= u_i.email %></td>
-          <% if u_i.seatNumber == nil%>
-            <td>미신청</td>
-          <% else %>
-            <td><%= u_i.seatNumber %></td>
-          <% end %>
-          <td>
-            <% if u_i.admin == true %>
-              <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
-            <% else %>
-              <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<div id="page-wrapper" style="height:100%;">
+  <div class="container container-fluid">
+    <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">
+              신청현황<small>application condition</small>
+          </h1>
+          <%= flash[:notice] %>
+          <%= flash[:caution] %>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th class="admin_index">이름</th>
+                <th class="admin_index">학번</th>
+                <th class="admin_index">이메일</th>
+                <th class="admin_index">신청한 사물함</th>
+                <th class="admin_index">삭제</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user_admin.each do |u_i| %>
+                <tr>
+                  <td>
+                    <%= u_i.name %>
+                  </td>
+                  <% if u_i.admin == true %>
+                    <td>관리자</td>
+                  <% else %>
+                    <td><%= u_i.stuN %></td>
+                  <% end %>
+                  <td><%= u_i.email %></td>
+                  <% if u_i.seatNumber == nil%>
+                    <td>미신청</td>
+                  <% else %>
+                    <td><%= u_i.seatNumber %></td>
+                  <% end %>
+                  <td>
+                    <% if u_i.admin == true %>
+                      <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
+                    <% else %>
+                      <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

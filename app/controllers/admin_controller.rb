@@ -1,4 +1,7 @@
 class AdminController < ApplicationController
+  before_action :user_signed?
+  before_action :admin_not?
+
   def index
     @head = true
     @user_admin = User.all.order('stuN ASC')

@@ -19,6 +19,19 @@
  *= require_self
  */
 
+div.container > div.table-responsive > h2 {
+  text-align: center;
+}
+
+form#box > input.btn.btn-default {
+  width:100%;
+
+}
+
+#footer_id {
+  width:200px;
+}
+
  .wall {
    height:100px;
  }

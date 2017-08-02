@@ -21,4 +21,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_signed?
+    if current_user.id == nil
+      redirect_to '/'
+    end
+  end
+
+  def admin_not?
+    if current_user.admin == nil
+      redirect_to '/'
+    end
+  end
 end

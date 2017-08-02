@@ -1,38 +1,37 @@
-<div class="container">
-  <h1 class="page-header">
-      사물함 신청 <small>locker application</small>
-  </h1>
-  <ol class="breadcrumb">
-      <li class="active">
-          사물함 이용에 대하여 문의사항이 있을 경우, <a href="#">이곳</a>에 문의해주세요.<br>
-          사물함 이용책임자 : 응용화학과 학생회장 유혁준 01012345678
-      </li>
-  </ol>
-  <h2>A사물함</h2>
+<h1 class="page-header container">
+    사물함 신청 <small>locker application</small>
+</h1>
+<ol class="breadcrumb container">
+    <li class="active">
+        사물함 이용에 대하여 문의사항이 있을 경우, <a href="#">이곳</a>에 문의해주세요.<br>
+        사물함 이용책임자 : 응용화학과 학생회장 유혁준 01012345678
+    </li>
+</ol>
+<div class = "container" style = "display:flex; flex-wrap:wrap; justify-content:space-around;">
   <div class="table-responsive">
-  <table class="table">
+    <h2>A사물함</h2>
+    <table class="table">
       <% @number.each do |num| %>
         <tr>
           <% num.each do |n| %>
             <td>
-              <%= form_tag box_index_path do %>
+              <%= form_tag box_index_path, id:"box" do %>
                 <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
               <% end %>
             </td>
           <% end %>
         </tr>
       <% end %>
-        </table>
-      </div>
-
-  <h2>B사물함</h2>
+    </table>
+  </div>
   <div class="table-responsive">
+    <h2>B사물함</h2>
     <table class="table">
-      <% @number.each do |num| %>
+      <% @number_dif.each do |num| %>
         <tr>
           <% num.each do |n| %>
             <td>
-              <%= form_tag box_index_path do %>
+              <%= form_tag box_index_path, id:"box" do %>
                 <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "B-<%= n %>">
               <% end %>
             </td>
@@ -40,22 +39,137 @@
         </tr>
       <% end %>
     </table>
-      </div>
-
-      <h2>C사물함</h2>
-      <div class="table-responsive">
-        <table class="table">
-          <% @number.each do |num| %>
-            <tr>
-              <% num.each do |n| %>
-                <td>
-                  <%= form_tag box_index_path do %>
-                    <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "B-<%= n %>">
-                  <% end %>
-                </td>
+  </div>
+  <div class="table-responsive">
+    <h2>C사물함</h2>
+    <table class="table">
+      <% @number.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "C-<%= n %>">
               <% end %>
-            </tr>
+            </td>
           <% end %>
-        </table>
-          </div>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <h2>D사물함</h2>
+    <table class="table">
+      <% @number_dif.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "D-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
+<div class = "container" style = "display:flex; flex-wrap:wrap; justify-content:space-around;">
+  <div class="table-responsive">
+    <h2>E사물함</h2>
+    <table class="table">
+      <% @number.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "E-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <h2>F사물함</h2>
+    <table class="table">
+      <% @number_dif.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "F-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <h2>G사물함</h2>
+    <table class="table">
+      <% @number.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "G-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <h2>H사물함</h2>
+    <table class="table">
+      <% @number_dif.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "H-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class = "container" style = "display:flex; flex-wrap:wrap; justify-content:space-between;">
+  <div class="table-responsive">
+    <h2>I사물함</h2>
+    <table class="table">
+      <% @number.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "I-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <h2>J사물함</h2>
+    <table class="table">
+      <% @number_dif.each do |num| %>
+        <tr>
+          <% num.each do |n| %>
+            <td>
+              <%= form_tag box_index_path, id:"box" do %>
+                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "J-<%= n %>">
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div><!--container닫힘태그 -->

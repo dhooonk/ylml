@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root "posts#index"
-  resources :posts, except: [:show]
-  resources :box, only: [:index, :new, :create, :destroy]
+  resources :posts, only: [:index, :new]
+  resources :box, only: [:index, :create, :destroy]
   resources :admin, only: [:index, :destroy]
   delete "/destroy_all/:id" => "admin#destroy_all"
   resources :csv, only: [:index, :create] do

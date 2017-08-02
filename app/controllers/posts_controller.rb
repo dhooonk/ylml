@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  def index 
+  before_action :user_signed?, only: [:new]
+  def index
 
   end
 
