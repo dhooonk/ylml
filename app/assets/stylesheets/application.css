@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 
 /*
@@ -62,7 +63,10 @@ form#box > input.btn.btn-default {
 
 
  * {
-   font-family: 'Nanum Gothic';
+   /*font-family: 'Nanum Gothic';*/
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
 }
 
 .btn-file {
@@ -92,9 +96,9 @@ form#box > input.btn.btn-default {
     text-align: center;
 
 }
-.parallax {
+.parallax1 {
     /* The image used */
-    background-image: url("boxes.jpg");
+    background-image: url("boxes_fill.jpg");
 
     /* Set a specific height */
     min-height: cover;
@@ -106,40 +110,68 @@ form#box > input.btn.btn-default {
     background-size: cover;
 }
 .about-section {
-    height: 100%;
-    padding-top: 150px;
+    height: 60%;
+    padding-top: 100px;
     text-align: left;
+    /*
    text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 -moz-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 -webkit-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 line-height:2em;
+*/
 }
+
+@media(max-width:768px){.about-section{padding:48px 26px;height: auto;}}
+@media(max-width:425px){.about-section{padding:48px 26px;height: auto;}}
+
 .services-section {
     height: 100%;
-    padding-top: 150px;
+    padding-top: 100px;
    padding-left: 50px;
     text-align: right;
     background: #eee;
 }
+@media(max-width:768px){.services-section{padding:48px 26px;height: auto;}}
+@media(max-width:425px){.services-section{padding:48px 26px;height: auto;}}
+
 .color1-section {
     height: 30px;
     padding-top: 20px;
     text-align: center;
-    background: #bcd7b0;
+    background: #34464b;
+}
+.parallax2 {
+    /* The image used */
+    background-image: url("khu_lib_fill.jpg");
+
+    /* Set a specific height */
+    min-height: cover;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .contact-section {
     height: 80%;
     padding-top: 150px;
     text-align: right;
 }
+@media(max-width:768px){.contact-section{padding:48px 26px;height: auto;}}
+@media(max-width:425px){.contact-section{padding:48px 26px;height: auto;}}
+
 .footer-section {
-    height: 20%;
+    height: auto;
     padding-top: 30px;
     padding-bottom: 30px;
     text-align: left;
     color:#a9afb3;
     background: #292a2b;
 }
+@media(max-width:768px){.footer-section{padding:48px 26px;height: auto;}}
+@media(max-width:425px){.footer-section{padding:48px 26px;height: auto;}}
+
 
 body {
     width: 100%;

@@ -39,7 +39,7 @@ class BoxController < ApplicationController
       current_user.seatNumber = params[:seatNumber]
       current_user.save
       redirect_to '/'
-      flash[:success] = "사물함이 신청되었습니다."
+      flash[:success] = "#{current_user.seatNumber} 사물함이 신청되었습니다."
     end
   end
 
