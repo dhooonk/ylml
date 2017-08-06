@@ -8,26 +8,13 @@ class BoxController < ApplicationController
     number_thr = (9..12)
     number_fou = (13..16)
     number_fiv = (17..20)
-    number_six = (21..24)
-    number_sev = (25..28)
-    number_eig = (29..32)
-    number_nin = (33..36)
-    number_ten = (37..40)
-    @number = [number_one, number_two, number_thr, number_fou, number_fiv,
-              number_six, number_sev, number_eig, number_nin, number_ten]
+    @number = [number_one, number_two, number_thr, number_fou, number_fiv]
     number_one_dif = (1..2)
     number_two_dif = (3..4)
     number_thr_dif = (5..6)
     number_fou_dif = (7..8)
     number_fiv_dif = (9..10)
-    number_six_dif = (11..12)
-    number_sev_dif = (13..14)
-    number_eig_dif = (15..16)
-    number_nin_dif = (17..18)
-    number_ten_dif = (19..20)
-    @number_dif = [number_one_dif, number_two_dif, number_thr_dif, number_fou_dif,
-                  number_fiv_dif, number_six_dif, number_sev_dif, number_eig_dif,
-                   number_nin_dif, number_ten_dif]
+    @number_dif = [number_one_dif, number_two_dif, number_thr_dif, number_fou_dif, number_fiv_dif]
 
   end
 
