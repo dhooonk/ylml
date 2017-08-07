@@ -8,6 +8,14 @@
           </h1>
           <%= flash[:notice] %>
           <%= flash[:caution] %>
+
+
+          <%= form_tag admin_index_path,  method: "get" do %>
+            <input class="btn btn-default" type="submit" value="학번 순" name="order">
+            <input class="btn btn-default" type="submit" value="사물함 순" name="order">
+          <% end %>
+
+
           <table class="table table-condensed">
             <thead>
               <tr>

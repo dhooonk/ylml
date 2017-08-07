@@ -4,7 +4,12 @@ class AdminController < ApplicationController
 
   def index
     @head = true
+      @user_admin = User.all.order('stuN ASC')
+    if params[:order]== '사물함 순'
+    @user_admin = User.all.order('seatNumber ASC')
+  elsif params[:order]== '학번 순'
     @user_admin = User.all.order('stuN ASC')
+  end
   end
 
   def destroy ##특정 1명의 개인의 계정을 삭제하는 액션
