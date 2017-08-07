@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807112649) do
+ActiveRecord::Schema.define(version: 20170807130912) do
 
   create_table "boxes", force: :cascade do |t|
     t.string "applied"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170807112649) do
     t.string "seatNumber"
     t.boolean "admin"
     t.integer "stuN"
+    t.string "identity"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -5,6 +5,7 @@ class AdminController < ApplicationController
   def index
     @head = true
     @user_admin = User.all.order('stuN ASC')
+    
   end
 
   def destroy ##특정 1명의 개인의 계정을 삭제하는 액션
