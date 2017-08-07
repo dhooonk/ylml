@@ -15,7 +15,9 @@
                 <th class="admin_index">학번</th>
                 <th class="admin_index">이메일</th>
                 <th class="admin_index">신청한 사물함</th>
-                <th class="admin_index">삭제</th>
+                <th class="admin_index">비밀번호 변경</th>
+                <th class="admin_index">계정삭제</th>
+
               </tr>
             </thead>
             <tbody>
@@ -35,6 +37,9 @@
                   <% else %>
                     <td><%= u_i.seatNumber %></td>
                   <% end %>
+                  <td>
+                      <%= link_to "[변경]",edit_admin_path(u_i.id), method:"get", data: {confirm: "비밀번호가 '123456'으로 변경됩니다. 정말 변경하시겠습니까?"} %>
+                  </td>
                   <td>
                     <% if u_i.admin == true %>
                       <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
