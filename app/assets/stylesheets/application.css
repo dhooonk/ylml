@@ -20,6 +20,10 @@
  *= require_self
  */
 
+#selected {
+  background-color: gray;
+}
+
 div.container > div.table-responsive > h2 {
   text-align: center;
 }

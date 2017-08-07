@@ -16,7 +16,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
+                <% if !!Cabinet.find_by(cabins:"A-#{n}") %>
+                    <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
+                <% else %>
+                    <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
+                <% end %>
               <% end %>
             </td>
           <% end %>
@@ -32,7 +36,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "B-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"B-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "B-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "B-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -48,7 +56,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "C-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"C-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "C-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "C-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -64,7 +76,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "D-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"D-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "D-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "D-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -82,7 +98,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "E-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"E-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "E-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "E-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -98,7 +118,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "F-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"F-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "F-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "F-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -114,7 +138,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "G-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"G-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "G-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "G-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -130,7 +158,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "H-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"H-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "H-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "H-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -148,7 +180,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "I-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"I-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "I-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "I-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>
@@ -164,7 +200,11 @@
           <% num.each do |n| %>
             <td>
               <%= form_tag box_index_path, id:"box" do %>
-                <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "J-<%= n %>">
+              <% if !!Cabinet.find_by(cabins:"J-#{n}") %>
+                  <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "J-<%= n %>">
+              <% else %>
+                  <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "J-<%= n %>">
+              <% end %>
               <% end %>
             </td>
           <% end %>

@@ -1,7 +1,9 @@
 class BoxController < ApplicationController
   before_action :user_apply?, only: [:index, :create]
   before_action :user_signed?
+
   def index
+    @cabinets = Cabinet.all
     # 행           열 #
     number_one = (1..4)
     number_two = (5..8)
@@ -23,6 +25,7 @@ class BoxController < ApplicationController
       redirect_to box_index_path, method:"get"
       flash[:alert] = "이미 신청완료 된 사물함입니다."
     else
+      Cabinet.create(cabins:params[:seatNumber])
       current_user.seatNumber = params[:seatNumber]
       current_user.save
       redirect_to '/'
@@ -33,6 +36,8 @@ class BoxController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.seatNumber = nil
+    cabinet = Cabinet.find_by(user.seatNumber)
+    cabinet.destroy
     user.save
 
     redirect_to new_post_path
