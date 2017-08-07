@@ -28,4 +28,13 @@ class AdminController < ApplicationController
     flash[:warning] = "전체 계정 정보가 초기화 되었습니다."
     redirect_to admin_index_path
   end
+
+  def edit
+    user=User.find(params[:id])
+    user.password='123456'
+    user.password_confirmation='123456'
+    user.save
+    flash[:warning] = "'#{user.name}'사용자의 계정(#{user.email}) 비밀번호가 변경되었습니다."
+    redirect_to admin_index_path
+  end
 end

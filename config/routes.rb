@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :skip => [:registrations]
+as :user do
+  get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+  put 'users' => 'devise/registrations#update', :as => 'user_registration'
+end
   root "posts#index"
   resources :posts, only: [:index, :new]
   resources :box, only: [:index, :create, :destroy]
-  resources :admin, only: [:index, :destroy]
+  resources :admin, only: [:index, :destroy, :edit]
   delete "/destroy_all/:id" => "admin#destroy_all"
   resources :csv, only: [:index, :create] do
    collection { post :import }
