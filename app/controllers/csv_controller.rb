@@ -7,11 +7,13 @@ class CsvController < ApplicationController
 
   def create
     User.create(name:params[:name], stuN:params[:stuN], email:params[:email], password:params[:password])
-    redirect_to admin_index_path, notice: "학생정보 등록완료"
+    redirect_to admin_index_path
+    flash[:warning] = "회원정보가 등록되었습니다."
   end
 
   def import
     User.import(params[:file])
-    redirect_to admin_index_path, notice: "학생정보 등록완료"
+    redirect_to admin_index_path
+    flash[:warning] = "회원정보가 등록되었습니다."
   end
 end

@@ -50,9 +50,9 @@
                   </td>
                   <td>
                     <% if u_i.admin == true %>
-                      <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
+                      <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "관리자 계정을 제외한 모든 계정이 삭제됩니다. 정말 삭제하시겠습니까? (삭제된 계정은 복구할 수 없습니다.)"} %>
                     <% else %>
-                      <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "정말 삭제하시겠습니까?"} %>
+                      <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "선택된 계정이 삭제됩니다. 정말 삭제하시겠습니까? (삭제된 계정은 복구할 수 없습니다.)"} %>
                     <% end %>
                   </td>
                 </tr>
