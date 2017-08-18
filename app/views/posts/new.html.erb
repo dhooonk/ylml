@@ -7,36 +7,38 @@
                 <h1 class="page-header">
                     내 정보<small>My info</small>
                 </h1>
-                <table class="table">
-                  <tr>
-                    <th class = "new_html">이름</th>
-                    <th class = "new_html">이메일</th>
-                    <th class = "new_html">비밀번호</th>
-                    <% if current_user.seatNumber != nil %>
-                      <% if current_user.admin != true %>
-                        <th class = "new_html">사물함</th>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tr>
+                      <th class = "new_html">이름</th>
+                      <th class = "new_html">이메일</th>
+                      <th class = "new_html">비밀번호</th>
+                      <% if current_user.seatNumber != nil %>
+                        <% if current_user.admin != true %>
+                          <th class = "new_html">사물함</th>
+                        <% end %>
+                      <% else %>
+                        <% if current_user.admin != true %>
+                          <th class = "new_html">사물함</th>
+                        <% end %>
                       <% end %>
-                    <% else %>
-                      <% if current_user.admin != true %>
-                        <th class = "new_html">사물함</th>
+                    </tr>
+                    <tr class = "new_html">
+                      <th class = "new_html"><%= current_user.name %></th>
+                      <th class = "new_html"><%= current_user.email %></th>
+                      <th class = "new_html"><%= link_to "비밀번호수정", edit_user_registration_path %></th>
+                      <% if current_user.seatNumber != nil %>
+                        <% if current_user.admin != true %>
+                          <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "사물함 취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
+                        <% end %>
+                      <% else %>
+                        <% if current_user.admin != true %>
+                          <th class = "new_html">신청하지 않으셨습니다.</th>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </tr>
-                  <tr class = "new_html">
-                    <th class = "new_html"><%= current_user.name %></th>
-                    <th class = "new_html"><%= current_user.email %></th>
-                    <th class = "new_html"><%= link_to "비밀번호수정", edit_user_registration_path %></th>
-                    <% if current_user.seatNumber != nil %>
-                      <% if current_user.admin != true %>
-                        <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "사물함 취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
-                      <% end %>
-                    <% else %>
-                      <% if current_user.admin != true %>
-                        <th class = "new_html">신청하지 않으셨습니다.</th>
-                      <% end %>
-                    <% end %>
-                  </tr>
-                </table>
+                    </tr>
+                  </table>
+                </div>
 
 
               </div>
