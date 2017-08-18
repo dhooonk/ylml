@@ -9,6 +9,8 @@ class AdminController < ApplicationController
       @user_admin = User.all.order('seatNumber ASC')
     elsif params[:order]== '학번 순'
       @user_admin = User.all.order('stuN ASC')
+    elsif params[:order] == '이름 순'
+      @user_admin = User.all.order('name ASC')
     end
   end
 
