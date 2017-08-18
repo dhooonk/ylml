@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :user_signed?, only: [:new]
+  before_action :authenticate_user!, only: [:new]
   def index
 
   end

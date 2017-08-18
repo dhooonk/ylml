@@ -1,7 +1,8 @@
 class BoxController < ApplicationController
+  before_action :authenticate_user!
   before_action :user_apply?, only: [:index, :create]
-  before_action :user_signed?
-  before_action :time_condition
+  # 서비스 기간부터 작동시키기
+  # before_action :time_condition
 
   def index
     @cabinets = Cabinet.all
