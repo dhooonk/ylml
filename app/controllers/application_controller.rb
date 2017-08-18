@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  include BoxHelper
   include AdminHelper
+  include BoxHelper
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 

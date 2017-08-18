@@ -1,6 +1,7 @@
 class BoxController < ApplicationController
   before_action :authenticate_user!
   before_action :user_apply?, only: [:index, :create]
+  before_action :authenticate_admin!
   # 서비스 기간부터 작동시키기
   # before_action :time_condition
 
@@ -48,29 +49,11 @@ class BoxController < ApplicationController
   end
 
   private
-  ##
-  def time_condition
-    if Time.now >= "2017-08-07 23:15:00 +0900" && Time.now <= "2017-08-08 23:15:00 +0900"
-      if current_user.identity == "pfs"
-        return true
-      elsif current_user.identity == "gda"
-        if Time.now >= "2017-08-07 23:20:00 +0900" && "2017-08-08 23:15:00 +0900"
-          return true
-        else
-          redirect_to '/'
-        end
-      else
-        if Time.now >= "2017-08-07 23:25:00 +0900" && "2017-08-08 23:15:00 +0900"
-          return true
-        else
-          redirect_to '/'
-        end
-      end
-    else
-      if current_user.identity == "admin"
-        return true
-      else
-        redirect_to '/'
+  def authenticate_admin!
+    if current_user.identity != "admin" || current_user.identity != "3"
+      if current_time > Time.now || Time.now > final_time
+        redirect_to root_path
+        flash[:alert] = "신청기간이 아닙니다."
       end
     end
   end
