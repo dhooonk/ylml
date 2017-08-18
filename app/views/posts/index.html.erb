@@ -3,13 +3,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-               <img src="assets/logo.gif" style="width:cover;">
+               <img class="logo" src="assets/logo.gif">
                 <h1>당신의 사물함을 인터넷으로 신청하세요</h1>
                 <p>귀찮게 왔다갔다 할 필요가 없습니다.</p>
                 <% if user_signed_in?&&user_admin? %>
-                <a class = "btn btn-default btn-lg" href="/admin" style="color: black;">지금바로 이용하기</a>
+                <a class = "btn btn-default btn-lg" href="/admin" style="color: black;">이용하기</a>
                   <% else %>
-                <a class = "btn btn-default btn-lg" href="/box" style="color: black;">지금바로 이용하기</a>
+                <a class = "btn btn-default btn-lg" href="/box" style="color: black;">이용하기</a>
                   <% end%>
                 <a class="btn btn-default btn-lg page-scroll" href="#services">이용방법</a>
             </div>
@@ -152,7 +152,10 @@
           <h1><strong>서비스 학교 및 공공시설</strong></h1>
           <h4>경희대학교 응용화학과</h4>
         </div>
+        <div class="col-lg-12 col-xs-12">
+          <img class="icon" src="assets/icon.gif" align="left">
+        </div>
     </div>
-    <img src="assets/icon.gif" align="left">
+
 </div>
 </section>
