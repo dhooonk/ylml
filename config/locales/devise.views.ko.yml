@@ -2,29 +2,29 @@ ko:
   activerecord:
     attributes:
       user:
-        confirmation_sent_at: 
-        confirmation_token: 
-        confirmed_at: 
-        created_at: 
+        confirmation_sent_at:
+        confirmation_token:
+        confirmed_at:
+        created_at:
         current_password: "현재 비밀번호"
-        current_sign_in_at: 
-        current_sign_in_ip: 
+        current_sign_in_at:
+        current_sign_in_ip:
         email: "이메일"
-        encrypted_password: 
-        failed_attempts: 
-        last_sign_in_at: 
-        last_sign_in_ip: 
-        locked_at: 
+        encrypted_password:
+        failed_attempts:
+        last_sign_in_at:
+        last_sign_in_ip:
+        locked_at:
         password: "비밀번호"
         password_confirmation: "비밀번호 확인"
-        remember_created_at: 
+        remember_created_at:
         remember_me: "로그인 정보 기억하기"
-        reset_password_sent_at: 
-        reset_password_token: 
-        sign_in_count: 
-        unconfirmed_email: 
-        unlock_token: 
-        updated_at: 
+        reset_password_sent_at:
+        reset_password_token:
+        sign_in_count:
+        unconfirmed_email:
+        unlock_token:
+        updated_at:
     models:
       user: "사용자"
   devise:
@@ -51,9 +51,9 @@ ko:
         instruction: "아래의 링크를 클릭하시면 이메일 인증이 완료됩니다:"
         subject: "이메일 인증 안내"
       password_change:
-        greeting: 
-        message: 
-        subject: 
+        greeting:
+        message:
+        subject:
       reset_password_instructions:
         action: "비밀번호 변경"
         greeting: "%{recipient}님 안녕하세요!"
@@ -90,10 +90,11 @@ ko:
         are_you_sure: "정말로 탈퇴하시겠습니까?"
         cancel_my_account: "회원 탈퇴"
         currently_waiting_confirmation_for_email: "현재 다음 이메일 인증 대기중입니다: %{email}"
-        leave_blank_if_you_don_t_want_to_change_it: "변경을 원하지 않으시면 빈 칸으로 남겨주세요"
+        leave_blank_if_you_don_t_want_to_change_it: ""
         title: "%{resource} 정보 수정"
         unhappy: "회원 탈퇴를 하시겠습니까?"
         update: "변경"
+        back: "뒤로가기"
         we_need_your_current_password_to_confirm_your_changes: "변경 사항을 반영하려면 현재의 비밀번호를 입력하세요"
       new:
         sign_up: "회원 가입"
