@@ -98,7 +98,7 @@ form#box > input.btn.btn-default {
 }
 .parallax1 {
     /* The image used */
-    background-image: url("boxes_fill.jpg");
+    background-image: url("boxes_fill_b.jpg");
 
     /* Set a specific height */
     min-height: cover;
@@ -113,6 +113,7 @@ form#box > input.btn.btn-default {
     min-height: 60%;
     padding-top: 100px;
     text-align: left;
+    color:#f3f3f3;
     /*
    text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 -moz-text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
@@ -158,6 +159,8 @@ line-height:2em;
     min-height: 80%;
     padding-top: 150px;
     text-align: right;
+    bottom:0;
+    color:#eeeeee;
 }
 @media(max-width:768px){.contact-section{padding:48px 26px;height: auto;}}
 @media(max-width:425px){.contact-section{padding:48px 26px;height: auto;}}
