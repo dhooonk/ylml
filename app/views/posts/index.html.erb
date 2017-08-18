@@ -99,7 +99,7 @@
                 <h3 class="panel-title">사물함신청 확인</h3>
                 </div>
                 <div class="panel-body">
-                사물함이 제대로 신청되어있는지 확인합니다.
+                설정된 사물함에 올바르게 신청되었는지 확인합니다.
                 </div>
                 </div>
                 <div class="panel panel-default">
@@ -116,7 +116,13 @@
               <div class="col-xs-12">
                 <br>
                 <br>
-                <a class="btn btn-default btn-lg btn-block" href="/box">지금바로 이용하기</a><br>
+                <span class="btn btn-default btn-lg btn-block" style="color">
+                <% if user_admin? %>
+                  <%= link_to "지금바로 이용하기", admin_index_path %>
+                  <% else %>
+                  <%= link_to "지금바로 이용하기", box_index_path%>
+                  <% end %>
+                </span>
               </div>
             </div>
 </div>

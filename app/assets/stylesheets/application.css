@@ -184,7 +184,9 @@ html {
     width: 100%;
     height: 100%;
 }
-
+.contents{
+  min-height: 80%;
+}
 #footer_id {
   width:200px;
 }
