@@ -14,20 +14,23 @@ class AdminController < ApplicationController
 
   def destroy ##특정 1명의 개인의 계정을 삭제하는 액션
     user = User.find(params[:id])
-    if user.admin != true
+    tmp_user = user
+    if (user.identity != "admin")
       user.destroy
     else
       flash[:warning] = "관리자 계정은 삭제할 수 없습니다."
     end
-    c = Cabinet.find_by(cabins:user.seatNumber)
-    if !!Cabinet.find_by(cabins:user.seatNumber)
+    c = Cabinet.find_by(cabins:tmp_user.seatNumber)
+    if !!Cabinet.find_by(cabins:tmp_user.seatNumber)
       c.destroy
     end
     redirect_to admin_index_path
   end
 
   def destroy_all ##관리자 계정을 제외한 모든 계정 초기화 액션
-    User.where(admin: nil).destroy_all
+    User.where(identity: "1").destroy_all
+    User.where(identity: "2").destroy_all
+    User.where(identity: "3").destroy_all
     Cabinet.destroy_all
     flash[:warning] = "전체 계정 정보가 삭제 되었습니다."
     redirect_to admin_index_path

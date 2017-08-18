@@ -7,17 +7,17 @@ class BoxController < ApplicationController
   def index
     @cabinets = Cabinet.all
     # 행           열 #
-    number_one = (1..4)
-    number_two = (5..8)
-    number_thr = (9..12)
+    number_one = ["01", "02", "03", "04"]
+    number_two = ["05", "06", "07", "08"]
+    number_thr = ["09", "10", "11", "12"]
     number_fou = (13..16)
     number_fiv = (17..20)
     @number = [number_one, number_two, number_thr, number_fou, number_fiv]
-    number_one_dif = (1..2)
-    number_two_dif = (3..4)
-    number_thr_dif = (5..6)
-    number_fou_dif = (7..8)
-    number_fiv_dif = (9..10)
+    number_one_dif = ["01", "02"]
+    number_two_dif = ["03", "04"]
+    number_thr_dif = ["05", "06"]
+    number_fou_dif = ["07", "08"]
+    number_fiv_dif = ["09", "10"]
     @number_dif = [number_one_dif, number_two_dif, number_thr_dif, number_fou_dif, number_fiv_dif]
 
   end
@@ -27,7 +27,7 @@ class BoxController < ApplicationController
       redirect_to box_index_path, method:"get"
       flash[:alert] = "이미 신청완료 된 사물함입니다."
     else
-      Cabinet.create(cabins:params[:seatNumber])
+      Cabinet.create(cabins: params[:seatNumber], user_id: current_user.id)
       current_user.seatNumber = params[:seatNumber]
       current_user.save
       redirect_to '/'
@@ -37,9 +37,9 @@ class BoxController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.seatNumber = nil
-    cabinet = Cabinet.find_by(user.seatNumber)
+    cabinet = Cabinet.find_by(cabins: user.seatNumber)
     cabinet.destroy
+    user.seatNumber = nil
     user.save
 
     redirect_to new_post_path

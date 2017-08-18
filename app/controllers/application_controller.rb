@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_not?
-    if current_user.admin == nil
+    if (current_user.identity != "admin")
       redirect_to '/'
     end
   end

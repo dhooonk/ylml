@@ -1,53 +1,55 @@
 <div id="page-wrapper">
-    <div class="container container-fluid">
-
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    회원정보파일 업로드 <small>User info file Upload</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li class="active">
-
-                        '네자리내자리'는 엑셀의 CSV 파일을 이용하여 회원정보를 업로드 할 수 있습니다.<br>
-                        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-full="assets/tutorial.jpg"> 사용방법 </button>
-
-                    </li>
-                </ol>
-            </div>
+  <div class="container container-fluid">
+      <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                회원정보파일 업로드 <small>User info file Upload</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active">
+                  '네자리내자리'는 엑셀의 CSV 파일을 이용하여 회원정보를 업로드 할 수 있습니다.<br>
+                  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-full="assets/tutorial.jpg"> 사용방법 </button>
+                </li>
+            </ol>
         </div>
-  <h2>파일선택</h2>
-  <hr>
-  <%= form_tag import_csv_index_path, multipart: true do %>
-  <span class="btn btn-large btn-default btn-file">
-    파일선택
-    <%= file_field_tag :file %>
-  </span>
-     <%= submit_tag "등록", :class => "btn btn-default" %>
+    </div>
+    <h2>파일선택</h2>
+    <hr>
+    <%= form_tag import_csv_index_path, multipart: true do %>
+      <span class="btn btn-large btn-default btn-file">
+        파일선택
+        <%= file_field_tag :file %>
+      </span>
+       <%= submit_tag "등록", :class => "btn btn-default" %>
     <% end %>
-  <br>
-  <br>
-  <h2>직접등록</h2>
-  <%= form_tag csv_index_path do %>
-  <table class="table table-condensed">
-<thead>
-  <tr>
-    <th>이름</th>
-    <th>학번</th>
-    <th>이메일</th>
-    <th>비밀번호</th>
-    <th>비밀번호 확인</th>
-  </tr>
-</thead>
-<tbody>
-    <td><input type = "text" class="form-control" name = "name"></td>
-    <td><input type = "text" class="form-control" name = "stuN"></td>
-    <td><input type = "text" class="form-control" name = "email" placeholder="이메일"></td>
-    <td><input type = "text" class="form-control" name = "password" placeholder="비밀번호"></td>
-	  <td><input type = "password" class="form-control" name = "password_confirmation" placeholder="비밀번호 확인"></td>
     <br>
-  </table>
+    <br>
+    <h2>직접등록</h2><i>권한 - 1:학생 2:대학원생 3:교수 admin:관리자</i>
+    <%= form_tag csv_index_path do %>
+      <div class="table-responsive">
+        <table class="table table-condensed">
+          <thead>
+          <tr>
+            <th>이름</th>
+            <th>학번</th>
+            <th>이메일</th>
+            <th>비밀번호</th>
+            <th>비밀번호 확인</th>
+            <th>권한부여</th>
+          </tr>
+        </thead>
+          <tbody>
+            <td><input type = "text" class="form-control" name = "name"></td>
+            <td><input type = "text" class="form-control" name = "stuN"></td>
+            <td><input type = "text" class="form-control" name = "email" placeholder="이메일"></td>
+            <td><input type = "text" class="form-control" name = "password" placeholder="비밀번호"></td>
+            <td><input type = "password" class="form-control" name = "password_confirmation" placeholder="비밀번호 확인"></td>
+            <td><input type = "text" class="form-control" name = "identity" placeholder="1,2,3,admin 중 택1"></td>
+            <br>
+          </tbody>
+        </table>
+      </div>
     <input class="btn btn-default" type="submit" value="완료">
   <% end %>
 </div>

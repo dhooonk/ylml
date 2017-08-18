@@ -14,11 +14,11 @@
                       <th class = "new_html">이메일</th>
                       <th class = "new_html">비밀번호</th>
                       <% if current_user.seatNumber != nil %>
-                        <% if current_user.admin != true %>
+                        <% if !!(current_user.identity != "admin") %>
                           <th class = "new_html">사물함</th>
                         <% end %>
                       <% else %>
-                        <% if current_user.admin != true %>
+                        <% if !!(current_user.identity != "admin") %>
                           <th class = "new_html">사물함</th>
                         <% end %>
                       <% end %>
@@ -28,11 +28,11 @@
                       <th class = "new_html"><%= current_user.email %></th>
                       <th class = "new_html"><%= link_to "비밀번호수정", edit_user_registration_path %></th>
                       <% if current_user.seatNumber != nil %>
-                        <% if current_user.admin != true %>
+                        <% if !!(current_user.identity != "admin") %>
                           <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "사물함 취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
                         <% end %>
                       <% else %>
-                        <% if current_user.admin != true %>
+                        <% if !!(current_user.identity != "admin") %>
                           <th class = "new_html">신청하지 않으셨습니다.</th>
                         <% end %>
                       <% end %>

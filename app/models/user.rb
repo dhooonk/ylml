@@ -10,4 +10,6 @@ class User < ApplicationRecord
       User.create! row.to_hash
     end
   end
+
+  has_one :cabinet, :dependent => :destroy
 end
