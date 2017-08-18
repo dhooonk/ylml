@@ -50,7 +50,7 @@ class BoxController < ApplicationController
 
   private
   def authenticate_admin!
-    if current_user.identity != "admin" || current_user.identity != "3"
+    if current_user.identity != "admin" && current_user.identity != "3"
       if current_time > Time.now || Time.now > final_time
         redirect_to root_path
         flash[:alert] = "신청기간이 아닙니다."
