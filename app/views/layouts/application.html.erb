@@ -81,8 +81,9 @@
                     <li>&nbsp&nbsp&nbsp&nbsp<strong><%= current_user.name %></strong>&nbsp님 안녕하세요.</li>
                   <% end %>
                   <% if user_signed_in? %>
-                    <li><%= link_to new_post_path do %>내 정보<% end %></li>
                     <% if user_admin? %>
+                    <hr>
+                      <li><%= link_to "사물함설정", adminbox_path, method:"get" %></li>
                       <li><%= link_to "신청현황", admin_index_path %></li>
                       <li><%= link_to "학생등록", csv_index_path, method:"get" %></li>
                       <% else %>
@@ -92,6 +93,8 @@
                     <li><a href="/users/sign_in">로그인</a></li>
                   <% end %>
                   <% if user_signed_in? %>
+                  <hr>
+                    <li><%= link_to new_post_path do %>내 정보<% end %></li>
                     <li><%= link_to "로그아웃", destroy_user_session_path, method: "delete" %></li>
                   <% end %>
                 </ul>

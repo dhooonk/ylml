@@ -9,6 +9,7 @@ end
   resources :box, only: [:index, :create, :destroy]
   resources :admin, only: [:index, :destroy, :edit]
   delete "/destroy_all/:id" => "admin#destroy_all"
+  get "adminbox" => "admin#adminbox"
   resources :csv, only: [:index, :create] do
    collection { post :import }
   end
