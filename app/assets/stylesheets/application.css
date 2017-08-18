@@ -89,7 +89,10 @@ form#box > input.btn.btn-default {
     cursor: inherit;
     display: block;
 }
-
+.logo{
+}
+@media(max-width:768px){.icon{width:cover;}}
+@media(max-width:368px){.icon{width:100%;}}
 .intro-section {
     min-height: 100%;
     padding-top: 50px;
@@ -157,13 +160,18 @@ line-height:2em;
 }
 .contact-section {
     min-height: 80%;
-    padding-top: 150px;
+    padding: 150px 26px 0px 26px;
     text-align: right;
     bottom:0;
     color:#eeeeee;
 }
-@media(max-width:768px){.contact-section{padding:48px 26px;height: auto;}}
-@media(max-width:425px){.contact-section{padding:48px 26px;height: auto;}}
+@media(max-width:768px){.contact-section{padding:48px 26px 0px 26px;height: auto;}}
+@media(max-width:425px){.contact-section{padding:48px 26px 0px 26px;height: auto;}}
+
+.icon{
+}
+@media(max-width:768px){.icon{width:cover;}}
+@media(max-width:502px){.icon{width:100%;}}
 
 .footer-section {
     height: auto;
