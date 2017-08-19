@@ -54,8 +54,12 @@ class LimitsController < ApplicationController
       end
     end
 
-    @limit.save
-    @limit_.save
-    redirect_to edit_limit_path(1), method: "get"
+    if @limit.save && @limit_.save
+      redirect_to edit_limit_path(1), method: "get"
+      flash[:alert] = "신청기간 설정을 완료하였습니다."
+    else
+      redirect_to edit_limit_path(1), method: "get"
+      flash[:alert] = "신청기간 설정에 실패했습니다. 양식에 맞춰 작성해주세요."
+    end
   end
 end

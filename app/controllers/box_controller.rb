@@ -1,9 +1,10 @@
 class BoxController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!
+  before_action :ordinary_user_not?, except: [:destroy]
+  before_action :authenticate_admin!, except: [:destroy]
+  before_action :authenticate_admin_ver_destroy!, only: [:destroy]
   before_action :user_apply?, only: [:index, :create]
-  # 서비스 기간부터 작동시키기
-  # before_action :time_condition
+
 
   def index
     @cabinets = Cabinet.all
@@ -54,6 +55,15 @@ class BoxController < ApplicationController
       if (current_time > Time.now) || (Time.now > final_time)
         redirect_to root_path
         flash[:alert] = "신청기간이 아닙니다."
+      end
+    end
+  end
+
+  def authenticate_admin_ver_destroy!
+    if (current_user.identity != "admin") && (current_user.identity != "3")
+      if (current_time > Time.now) || (Time.now > final_time)
+        redirect_to root_path
+        flash[:alert] = "신청기간이 아니므로 사물함 취소가 불가합니다. 학생회에 문의하세요."
       end
     end
   end
