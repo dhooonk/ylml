@@ -11,6 +11,8 @@ class AdminController < ApplicationController
       @user_admin = User.all.order('stuN ASC')
     elsif params[:order] == '이름 순'
       @user_admin = User.all.order('name ASC')
+    else
+      @user_admin = User.all.order('identity DESC')
     end
   end
 

@@ -11,25 +11,47 @@
 
 
           <%= form_tag admin_index_path,  method: "get" do %>
-            <input class="btn btn-default" type="submit" value="학번 순" name="order">
-            <input class="btn btn-default" type="submit" value="사물함 순" name="order">
-            <input class="btn btn-default" type="submit" value="이름 순" name="order">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default">정렬</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><input id="btnIndrop" class="btn btn-default" type="submit" value="권한 순" name="order"></li>
+                <li><input id="btnIndrop" class="btn btn-default" type="submit" value="이름 순" name="order"></li>
+                <li><input id="btnIndrop" class="btn btn-default" type="submit" value="학번 순" name="order"></li>
+                <li><input id="btnIndrop" class="btn btn-default" type="submit" value="사물함 순" name="order"></li>
+              </ul>
+            </div>
           <% end %>
           <div class="table-responsive">
             <table class="table table-condensed">
               <thead>
                 <tr>
-                  <th class="admin_index">이름</th>
-                  <th class="admin_index">학번</th>
-                  <th class="admin_index">이메일</th>
-                  <th class="admin_index">신청한 사물함</th>
-                  <th class="admin_index">비밀번호 변경</th>
-                  <th class="admin_index">계정삭제</th>
+                  <th class="admin_index"><strong>권한</strong></th>
+                  <th class="admin_index"><strong>이름</strong></th>
+                  <th class="admin_index"><strong>학번</strong></th>
+                  <th class="admin_index"><strong>이메일</strong></th>
+                  <th class="admin_index"><strong>신청한 사물함</strong></th>
+                  <th class="admin_index"><strong>비밀번호 변경</strong></th>
+                  <th class="admin_index"><strong>계정삭제</strong></th>
                 </tr>
               </thead>
               <tbody>
                 <% @user_admin.each do |u_i| %>
                   <tr>
+                    <td>
+                      <% if u_i.identity == "1" %>
+                        학부생
+                      <% elsif u_i.identity == "2" %>
+                        대학원생
+                      <% elsif u_i.identity == "3" %>
+                        교수
+                      <% else %>
+                        관리자
+                      <% end %>
+                    </td>
                     <td>
                       <%= u_i.name %>
                     </td>

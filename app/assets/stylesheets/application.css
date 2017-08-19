@@ -20,6 +20,10 @@
  *= require_self
  */
 
+#btnIndrop {
+  width: 165px;
+}
+
 #empty_form {
   width:180px;
 }

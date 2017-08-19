@@ -10,16 +10,16 @@
                 <div class="table-responsive">
                   <table class="table">
                     <tr>
-                      <th class = "new_html">이름</th>
-                      <th class = "new_html">이메일</th>
-                      <th class = "new_html">비밀번호</th>
+                      <th class = "new_html"><strong>이름</strong></th>
+                      <th class = "new_html"><strong>이메일</strong></th>
+                      <th class = "new_html"><strong>비밀번호</strong></th>
                       <% if current_user.seatNumber != nil %>
                         <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html">사물함</th>
+                          <th class = "new_html"><strong>사물함</strong></th>
                         <% end %>
                       <% else %>
                         <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html">사물함</th>
+                          <th class = "new_html"><strong>사물함</strong></th>
                         <% end %>
                       <% end %>
                     </tr>
