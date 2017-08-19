@@ -20,6 +20,10 @@
  *= require_self
  */
 
+#empty_form {
+  width:180px;
+}
+
 #selected {
   background-color: gray;
 }
