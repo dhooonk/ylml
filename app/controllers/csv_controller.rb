@@ -3,6 +3,7 @@ class CsvController < ApplicationController
   before_action :admin_not?
   def index
     @users = User.all
+
   end
 
   def create

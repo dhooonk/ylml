@@ -18,14 +18,14 @@
           <h2>사물함기간 설정</h2>
           <hr>
           <div class="col-lg-offset-1 col-lg-10">
-            <div class="table-responsive">
-              <%= form_tag limit_path(1), method: "patch" do %>
+            <%= form_tag limit_path(1), method: "patch" do %>
+              <div class="table-responsive">
                  <table class="table">
                    <tr>
                      <td><strong>학부생 신청기간</strong></td>
                      <td>
-                       [시작]:<input type="text" name="student_time" placeholder="2000-00-00 15:00">
-                       [종료]:<input type="text" name="student_time_" placeholder="2000-00-00 15:00">
+                       [시작]:<input type="text" name="student_time" value="2000-00-00 15:00" placeholder="2000-00-00 15:00">
+                       [종료]:<input type="text" name="student_time_" value="2000-00-00 15:00" placeholder="2000-00-00 15:00">
                      </td>
                      <td>
                        [현재]: <%= @limit.student_time.chomp("+0900") %>~ <%= @limit_.student_time.chomp("+0900") %>
@@ -43,8 +43,8 @@
                    </tr>
                  </table>
                  <input type="submit" class="btn btn-default" value="설정완료">
-              <% end %>
-            </div>
+               </div>
+            <% end %>
           </div>
         </div>
           </div>
