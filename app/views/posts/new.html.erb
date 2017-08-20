@@ -29,7 +29,7 @@
                       <th class = "new_html"><%= link_to "회원정보수정", edit_user_registration_path %></th>
                       <% if current_user.seatNumber != nil %>
                         <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "사물함 취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
+                          <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
                         <% end %>
                       <% else %>
                         <% if !!(current_user.identity != "admin") %>
