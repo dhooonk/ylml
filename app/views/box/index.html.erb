@@ -21,9 +21,25 @@
             <td>
               <%= form_tag box_index_path, id:"box" do %>
                 <% if !!Cabinet.find_by(cabins:"A-#{n}") %>
-                    <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
+<input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
                 <% else %>
-                    <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "A-<%= n %>">
+                <button class="btn btn-default" data-toggle="modal" data-target="#myModal" type="button">A-<%= n %></button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <p><%= "A-#{n}" %> 사물함을 신청하시겠습니까?</p>
+                          </div>
+                          <div class="modal-footer">
+          <button class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%="A-#{n}"%>">확인</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                 <% end %>
               <% end %>
             </td>
