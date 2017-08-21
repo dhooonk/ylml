@@ -20,6 +20,10 @@
  *= require_self
  */
 
+  h2 {
+    text-align: center;
+  }
+
   @media screen and (min-width: 1680px) {
     .two_circle {
       padding: 50px 0;
