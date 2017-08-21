@@ -32,7 +32,7 @@ class BoxController < ApplicationController
       Cabinet.create(cabins: params[:seatNumber], user_id: current_user.id)
       current_user.seatNumber = params[:seatNumber]
       current_user.save
-      redirect_to '/'
+      redirect_to new_post_path, method: "get"
       flash[:success] = "#{current_user.seatNumber} 사물함이 신청되었습니다."
     end
   end
