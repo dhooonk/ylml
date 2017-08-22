@@ -10,6 +10,7 @@
                 <div class="table-responsive">
                   <table class="table">
                     <tr>
+                      <th class = "new_html"><strong>권한</strong></th>
                       <th class = "new_html"><strong>이름</strong></th>
                       <th class = "new_html"><strong>학과</strong></th>
                       <th class = "new_html"><strong>학번</strong></th>
@@ -26,6 +27,7 @@
                       <% end %>
                     </tr>
                     <tr class = "new_html">
+                      <th class = "new_html"><%= current_user.identity %></th>
                       <th class = "new_html"><%= current_user.name %></th>
                       <th class = "new_html"><%= current_user.major %></th>
                       <th class = "new_html"><%= current_user.stuN %></th>

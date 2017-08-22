@@ -23,6 +23,7 @@ class BoxController < ApplicationController
     @number_dif = [number_one_dif, number_two_dif, number_thr_dif, number_fou_dif, number_fiv_dif]
 
   end
+
   def applsci
     @cabinets = Cabinet.all
     # 행           열 #
@@ -38,8 +39,8 @@ class BoxController < ApplicationController
     number_fou_dif = ["07", "08"]
     number_fiv_dif = ["09", "10"]
     @number_dif = [number_one_dif, number_two_dif, number_thr_dif, number_fou_dif, number_fiv_dif]
-
   end
+
   def create
     if  User.find_by(seatNumber:params[:seatNumber])
       redirect_to box_index_path, method:"get"
