@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818165424) do
+ActiveRecord::Schema.define(version: 20170822070259) do
 
   create_table "cabinets", force: :cascade do |t|
     t.integer "user_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170818165424) do
     t.string "seatNumber"
     t.integer "stuN"
     t.string "identity", default: "1"
+    t.string "major"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

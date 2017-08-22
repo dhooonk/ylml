@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     update_attrs = [:password, :password_confirmation, :current_password]
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
+    devise_parameter_sanitizer.permit(:sign_up,        keys: [:stuN])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:stuN])
+    devise_parameter_sanitizer.permit(:sign_up,        keys: [:major])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:major])
+    devise_parameter_sanitizer.permit(:sign_up,        keys: [:identity])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:identity])
   end
 
   def user_apply?

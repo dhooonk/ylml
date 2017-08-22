@@ -11,6 +11,8 @@
                   <table class="table">
                     <tr>
                       <th class = "new_html"><strong>이름</strong></th>
+                      <th class = "new_html"><strong>학과</strong></th>
+                      <th class = "new_html"><strong>학번</strong></th>
                       <th class = "new_html"><strong>이메일</strong></th>
                       <th class = "new_html"><strong>비밀번호</strong></th>
                       <% if current_user.seatNumber != nil %>
@@ -25,6 +27,8 @@
                     </tr>
                     <tr class = "new_html">
                       <th class = "new_html"><%= current_user.name %></th>
+                      <th class = "new_html"><%= current_user.major %></th>
+                      <th class = "new_html"><%= current_user.stuN %></th>
                       <th class = "new_html"><%= current_user.email %></th>
                       <th class = "new_html"><%= link_to "회원정보수정", edit_user_registration_path %></th>
                       <% if current_user.seatNumber != nil %>

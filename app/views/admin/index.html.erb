@@ -31,6 +31,7 @@
                 <tr>
                   <th class="admin_index"><strong>권한</strong></th>
                   <th class="admin_index"><strong>이름</strong></th>
+                  <th class="admin_index"><strong>학과</strong></th>
                   <th class="admin_index"><strong>학번</strong></th>
                   <th class="admin_index"><strong>이메일</strong></th>
                   <th class="admin_index"><strong>신청한 사물함</strong></th>
@@ -54,6 +55,9 @@
                     </td>
                     <td>
                       <%= u_i.name %>
+                    </td>
+                    <td>
+                      <%= u_i.major %>
                     </td>
                     <% if !!(u_i.identity == "admin") %>
                       <td>관리자</td>
