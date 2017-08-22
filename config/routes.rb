@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :box, only: [:index, :create, :destroy]
   resources :admin, only: [:index, :destroy, :edit]
   delete "/destroy_all/:id" => "admin#destroy_all"
+  resources :choose
   resources :csv, only: [:index, :create] do
    collection { post :import }
   end
