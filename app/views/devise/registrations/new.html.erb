@@ -13,8 +13,8 @@
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, required: true %>
-    <%= f.input :major, required: true, label: "학과", placeholder: '응용화학과'%>
-    <%= f.input :identity, required: true, label: "권한", placeholder: '1/2/3'%>
+    <%= f.input :major, required: true, label: "학과", as: :radio_buttons, :collection => [ "응용화학과", "응용물리학과", "응용수학과", "우주과학과", "산업경영공학과" ]%>
+    <%= f.input :identity, required: true, label: "권한",as: :radio_buttons, :collection => [ "1","2","3","admin" ]%>
     <%= f.input :stuN, required: true, label: "학번", placeholder: '2013101234'%>
   </div>
 </div>

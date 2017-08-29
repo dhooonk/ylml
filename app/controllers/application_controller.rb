@@ -33,4 +33,36 @@ class ApplicationController < ActionController::Base
     end
   end
 
+# 전공판단
+def applchem_not?
+  if (current_user.major != "응용화학과")
+    redirect_to '/'
+  end
+end
+
+def applsci_not?
+  if (current_user.major != "응용물리학과" || current_user.major != "응용수학과" || current_user.major != "응용화학과" || current_user.major != "우주과학과")
+    redirect_to '/'
+  end
+end
+
+def ime_not?
+  if (current_user.major != "산업경영공학과")
+    redirect_to '/'
+  end
+end
+
+# 권한판단
+def ugstd_not?
+  if (current_user.identity != "1")
+    redirect_to '/'
+  end
+end
+def gstd_not?
+  if (current_user.major != "2")
+    redirect_to '/'
+  end
+end
+
+
 end
