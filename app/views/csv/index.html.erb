@@ -31,23 +31,49 @@
         <table class="table table-condensed">
           <thead>
             <tr>
-              <th><strong>이름</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-              <th><strong>학과</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-              <th><strong>학번</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-              <th><strong>이메일</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-              <th><strong>비밀번호</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-              <th><strong>비밀번호 확인</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
-              <th><strong>권한부여</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>이름</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>학과</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>학번</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>이메일</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>비밀번호</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>비밀번호 확인</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>권한부여</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
             </tr>
           </thead>
           <tbody>
             <td><input type = "text" class="form-control" name = "name" placeholder="이름"></td>
-            <td><input type = "text" class="form-control" name = "major" placeholder="학과"></td>
+            <td>
+                <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                학과선택
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><input type = "radio" name = "major" value="응용화학과">응용화학과</li>
+                <li><input type = "radio" name = "major" value="응용물리학과">응용물리학과</li>
+                <li><input type = "radio" name = "major" value="응용수학과">응용수학과</li>
+                <li><input type = "radio" name = "major" value="우주과학과">우주과학과</li>
+                </ul>
+                </div>
+            </td>
             <td><input type = "text" class="form-control" name = "stuN" placeholder="학번"></td>
             <td><input type = "text" class="form-control" name = "email" placeholder="이메일"></td>
             <td><input type = "password" class="form-control" name = "password" placeholder="비밀번호"></td>
             <td><input type = "password" class="form-control" name = "password_confirmation" placeholder="비밀번호 확인"></td>
-            <td><input type = "text" class="form-control" name = "identity" placeholder="1,2,3,admin 중 택1"></td>
+            <td>
+                <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                권한선택
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><input type = "radio" name = "identity" value="1">학부생</li>
+                <li><input type = "radio" name = "identity" value="2">대학원생</li>
+                <li><input type = "radio" name = "identity" value="3">교수</li>
+                <li><input type = "radio" name = "identity" value="admin">관리자</li>
+                </ul>
+                </div>
+            </td>
           </tbody>
         </table>
       </div>

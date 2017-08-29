@@ -39,7 +39,7 @@
                         <% end %>
                       <% else %>
                         <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html"><%= link_to "신청하기", box_index_path, method: "get" %></th>
+                          <th class = "new_html"><%= link_to "신청하기", choose_index_path, method: "get" %></th>
                         <% end %>
                       <% end %>
                     </tr>
