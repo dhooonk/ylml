@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830063946) do
+ActiveRecord::Schema.define(version: 20170830080224) do
 
   create_table "cabinet_apli_scis", force: :cascade do |t|
     t.integer "user_id"
