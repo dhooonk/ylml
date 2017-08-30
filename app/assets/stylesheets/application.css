@@ -23,7 +23,12 @@
   .h2 {
     text-align: center;
   }
-
+ #notice{
+   color:white;
+ }
+ #ylml_logo{
+   width:150px;
+ }
   @media screen and (min-width: 1680px) {
 
     #locker {

@@ -63,7 +63,7 @@ class LimitsController < ApplicationController
 
     if @limit.save
       redirect_to edit_limit_path(params[:id]), method: "get"
-      flash[:alert] = "신청기간 설정을 완료하였습니다."
+      flash[:success] = "신청기간 설정을 완료하였습니다."
     else
       redirect_to edit_limit_path(params[:id]), method: "get"
       flash[:alert] = "신청기간 설정에 실패했습니다. 양식에 맞춰 작성해주세요."
