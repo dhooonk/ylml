@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822070259) do
+ActiveRecord::Schema.define(version: 20170830004538) do
 
   create_table "cabinets", force: :cascade do |t|
     t.integer "user_id"
@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20170822070259) do
     t.string "gda_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "student_time_"
+    t.string "gda_time_"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "email", default: ""
     t.string "encrypted_password", default: "", null: false
     t.string "name"
     t.string "reset_password_token"
@@ -42,11 +44,12 @@ ActiveRecord::Schema.define(version: 20170822070259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "seatNumber"
-    t.integer "stuN"
     t.string "identity", default: "1"
     t.string "major"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.string "stuN"
+    t.boolean "applied_sci_admin", default: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["stuN"], name: "index_users_on_stuN", unique: true
   end
 
 end

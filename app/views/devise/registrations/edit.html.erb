@@ -13,7 +13,7 @@
       <h2><%= t(".title", resource: resource_class.model_name.human) %></h2>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>

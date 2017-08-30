@@ -1,53 +1,50 @@
 <div id="page-wrapper">
-    <div class="container container-fluid">
-
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    내 정보<small>My info</small>
-                </h1>
-                <div class="table-responsive">
-                  <table class="table">
-                    <tr>
-                      <th class = "new_html"><strong>권한</strong></th>
-                      <th class = "new_html"><strong>이름</strong></th>
-                      <th class = "new_html"><strong>학과</strong></th>
-                      <th class = "new_html"><strong>학번</strong></th>
-                      <th class = "new_html"><strong>이메일</strong></th>
-                      <th class = "new_html"><strong>비밀번호</strong></th>
-                      <% if current_user.seatNumber != nil %>
-                        <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html"><strong>사물함</strong></th>
-                        <% end %>
-                      <% else %>
-                        <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html"><strong>사물함</strong></th>
-                        <% end %>
-                      <% end %>
-                    </tr>
-                    <tr class = "new_html">
-                      <th class = "new_html"><%= current_user.identity %></th>
-                      <th class = "new_html"><%= current_user.name %></th>
-                      <th class = "new_html"><%= current_user.major %></th>
-                      <th class = "new_html"><%= current_user.stuN %></th>
-                      <th class = "new_html"><%= current_user.email %></th>
-                      <th class = "new_html"><%= link_to "회원정보수정", edit_user_registration_path %></th>
-                      <% if current_user.seatNumber != nil %>
-                        <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
-                        <% end %>
-                      <% else %>
-                        <% if !!(current_user.identity != "admin") %>
-                          <th class = "new_html"><%= link_to "신청하기", box_index_path, method: "get" %></th>
-                        <% end %>
-                      <% end %>
-                    </tr>
-                  </table>
-                </div>
-
-
-              </div>
+  <div class="container container-fluid">
+  <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+            내 정보<small>My info</small>
+        </h1>
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th class = "new_html"><strong>권한</strong></th>
+              <th class = "new_html"><strong>이름</strong></th>
+              <th class = "new_html"><strong>학과</strong></th>
+              <th class = "new_html"><strong>학번</strong></th>
+              <th class = "new_html"><strong>이메일</strong></th>
+              <th class = "new_html"><strong>비밀번호</strong></th>
+              <% if current_user.seatNumber != nil %>
+                <% if !!(current_user.identity != "admin") %>
+                  <th class = "new_html"><strong>사물함</strong></th>
+                <% end %>
+              <% else %>
+                <% if !!(current_user.identity != "admin") %>
+                  <th class = "new_html"><strong>사물함</strong></th>
+                <% end %>
+              <% end %>
+            </tr>
+            <tr class = "new_html">
+              <th class = "new_html"><%= current_user.identity %></th>
+              <th class = "new_html"><%= current_user.name %></th>
+              <th class = "new_html"><%= current_user.major %></th>
+              <th class = "new_html"><%= current_user.stuN %></th>
+              <th class = "new_html"><%= current_user.email %></th>
+              <th class = "new_html"><%= link_to "회원정보수정", edit_user_registration_path %></th>
+              <% if current_user.seatNumber != nil %>
+                <% if !!(current_user.identity != "admin") %>
+                  <th class = "new_html"><%= current_user.seatNumber %>&nbsp<%= link_to "취소", box_path(current_user.id), method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
+                <% end %>
+              <% else %>
+                <% if !!(current_user.identity != "admin") %>
+                  <th class = "new_html"><%= link_to "신청하기", box_index_path, method: "get" %></th>
+                <% end %>
+              <% end %>
+            </tr>
+          </table>
+        </div>
       </div>
-</div>
+    </div>
+  </div>
 </div>

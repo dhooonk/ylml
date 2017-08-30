@@ -10,6 +10,8 @@ ko:
         current_sign_in_at:
         current_sign_in_ip:
         email: "이메일"
+        login: "학번"
+        stuN: "학번"
         encrypted_password:
         failed_attempts:
         last_sign_in_at:

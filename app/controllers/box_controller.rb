@@ -1,6 +1,7 @@
 class BoxController < ApplicationController
   before_action :authenticate_user!
   before_action :ordinary_user_not?, except: [:destroy]
+  before_action :access_okay?
   before_action :authenticate_admin!, except: [:destroy]
   before_action :authenticate_admin_ver_destroy!, only: [:destroy]
   before_action :user_apply?, only: [:index, :create]

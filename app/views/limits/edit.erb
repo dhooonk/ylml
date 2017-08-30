@@ -18,7 +18,7 @@
           <h2>사물함기간 설정</h2>
           <hr>
           <div class="col-lg-12">
-            <%= form_tag limit_path(1), method: "patch" do %>
+            <%= form_tag limit_path(@limit_id), method: "patch" do %>
               <div class="table-responsive">
                  <table class="table">
                    <tr>
@@ -39,7 +39,7 @@
                        [현재]:
                      </td>
                      <td>
-                     <%= @limit.student_time.chomp("+0900") %>~ <%= @limit_.student_time.chomp("+0900") %>
+                     <%= @limit.student_time.chomp("+0900") %>~ <%= @limit.student_time_.chomp("+0900") %>
                      </td>
                    </tr>
                    <tr>
@@ -60,7 +60,7 @@
                        [현재]:
                      </td>
                      <td>
-                     <%= @limit.gda_time.chomp("+0900") %>~ <%= @limit_.gda_time.chomp("+0900") %>
+                     <%= @limit.gda_time.chomp("+0900") %>~ <%= @limit.gda_time_.chomp("+0900") %>
                      </td>
                    </tr>
                  </table>

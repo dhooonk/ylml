@@ -2,13 +2,20 @@ class LimitsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_not?
   def edit
-    @limit = Limit.find(1)
-    @limit_ = Limit.find(2)
+    if current_user.major == "응용화학과"
+      @limit = Limit.find(1)
+      @limit_id = 1
+    elsif (current_user.major == "응용물리학과") || (current_user.major == "응용화학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
+      @limit = Limit.find(2)
+      @limit_id = 2
+    elsif current_user.major == "산업경영공학과"
+      @limit = Limit.find(3)
+      @limit_id = 3
+    end
   end
 
   def update
-    @limit = Limit.find(1)
-    @limit_ = Limit.find(2)
+    @limit = Limit.find(params[:id])
 
     if params[:student_time].nil?
       @limit.student_time = (Time.now + 000101010110)
@@ -22,13 +29,13 @@ class LimitsController < ApplicationController
     end
 
     if params[:student_time_].nil?
-      @limit_.student_time = (Time.now + 000101010110)
+      @limit.student_time_ = (Time.now + 000101010110)
     else
       if params[:student_time_].length != 16
-        @limit_.student_time = (Time.now + 000101010110)
+        @limit.student_time_ = (Time.now + 000101010110)
       else
         limit = params[:student_time_]
-        @limit_.student_time = "#{limit} +0900"
+        @limit.student_time_ = "#{limit} +0900"
       end
     end
 
@@ -44,21 +51,21 @@ class LimitsController < ApplicationController
     end
 
     if params[:gda_time_].nil?
-      @limit_.gda_time = (Time.now + 000101010110)
+      @limit.gda_time_ = (Time.now + 000101010110)
     else
       if params[:gda_time_].length != 16
-        @limit_.gda_time = (Time.now + 000101010110)
+        @limit.gda_time_ = (Time.now + 000101010110)
       else
         limit = params[:gda_time_]
-        @limit_.gda_time = "#{limit} +0900"
+        @limit.gda_time_ = "#{limit} +0900"
       end
     end
 
-    if @limit.save && @limit_.save
-      redirect_to edit_limit_path(1), method: "get"
+    if @limit.save
+      redirect_to edit_limit_path(params[:id]), method: "get"
       flash[:alert] = "신청기간 설정을 완료하였습니다."
     else
-      redirect_to edit_limit_path(1), method: "get"
+      redirect_to edit_limit_path(params[:id]), method: "get"
       flash[:alert] = "신청기간 설정에 실패했습니다. 양식에 맞춰 작성해주세요."
     end
   end

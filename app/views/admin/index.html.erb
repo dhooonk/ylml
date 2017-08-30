@@ -33,7 +33,6 @@
                   <th class="admin_index"><strong>이름</strong></th>
                   <th class="admin_index"><strong>학과</strong></th>
                   <th class="admin_index"><strong>학번</strong></th>
-                  <th class="admin_index"><strong>이메일</strong></th>
                   <th class="admin_index"><strong>신청한 사물함</strong></th>
                   <th class="admin_index"><strong>비밀번호 변경</strong></th>
                   <th class="admin_index"><strong>계정삭제</strong></th>
@@ -64,7 +63,6 @@
                     <% else %>
                       <td><%= u_i.stuN %></td>
                     <% end %>
-                    <td><%= u_i.email %></td>
                     <% if u_i.seatNumber == nil%>
                       <td>미신청</td>
                     <% else %>
