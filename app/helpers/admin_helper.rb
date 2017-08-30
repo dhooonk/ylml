@@ -8,6 +8,8 @@ module AdminHelper
       return "응용화학과"
     elsif current_user.major == "산업경영공학과"
       return "산업경영공학과"
+    else
+      ["응용수학과", "우주과학과", "응용물리학과"]
     end
   end
 end

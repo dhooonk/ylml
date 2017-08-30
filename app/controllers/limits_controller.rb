@@ -5,7 +5,7 @@ class LimitsController < ApplicationController
     if current_user.major == "응용화학과"
       @limit = Limit.find(1)
       @limit_id = 1
-    elsif (current_user.major == "응용물리학과") || (current_user.major == "응용화학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
+    elsif (current_user.major == "응용물리학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
       @limit = Limit.find(2)
       @limit_id = 2
     elsif current_user.major == "산업경영공학과"

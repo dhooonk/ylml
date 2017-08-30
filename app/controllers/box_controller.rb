@@ -2,15 +2,17 @@ class BoxController < ApplicationController
   before_action :authenticate_user!
   before_action :ordinary_user_not?, except: [:destroy]
   before_action :access_okay?
+  before_action :applchem_not?, only: [:index]
+  before_action :applsci_not?, only: [:applsci]
+  before_action :ime_not?, only: [:ime]
   before_action :authenticate_admin!, except: [:destroy]
   before_action :authenticate_admin_ver_destroy!, only: [:destroy]
-  before_action :user_apply?, only: [:index, :applsci, :ime, :create]
+  before_action :user_apply?, except: [:destroy_apli_chem, :destroy_apli_sci, :destroy_ime]
+  before_action :user_apply_chem?, only: [:index]
+  before_action :user_apply_chem_aplisci?, only: [:applsci]
 
 
   def index
-    if current_user.major != "응용화학과"
-      redirect_to "/"
-    else
     @cabinets = Cabinet.all
     # 행           열 #
     number_one = ["01", "02", "03", "04"]
@@ -25,14 +27,11 @@ class BoxController < ApplicationController
     number_fou_dif = ["07", "08"]
     number_fiv_dif = ["09", "10"]
     @number_dif = [number_one_dif, number_two_dif, number_thr_dif, number_fou_dif, number_fiv_dif]
-  end
+
   end
 
   def applsci
-    if current_user.major == "산업경영공학과"
-      redirect_to "/"
-    else
-    @cabinets = Cabinet.all
+    @cabinets = CabinetApliSci.all
     # 행           열 #
     number_1 = ["01", "02", "03", "04", "05", "06"]
     number_2 = (13..18)
@@ -46,14 +45,11 @@ class BoxController < ApplicationController
     number_9 = (43..48)
     number_10 = (55..60)
     @number_halfto60 = [number_6, number_7, number_8, number_9, number_10]
-  end
+
   end
 
   def ime
-    if current_user.major != "산업경영공학과"
-      redirect_to "/"
-    else
-    @cabinets = Cabinet.all
+    @cabinets = CabinetApliSci.all
     # 행           열 #
     number_1 = ["01", "02", "03"]
     number_2 = ["04", "05", "06"]
@@ -109,29 +105,71 @@ class BoxController < ApplicationController
     number_44 = (130..132)
     number_45 = (133..135)
     @number_121to135 = [number_41, number_42, number_43, number_44, number_45]
-  end
+
   end
 
   def create
-    if  User.find_by(major: current_user.major, seatNumber:params[:seatNumber])
-      redirect_to box_index_path, method:"get"
-      flash[:alert] = "이미 신청완료 된 사물함입니다."
+    if current_user.major == "응용화학과"
+      if params[:major] == "응용화학과"
+        if Cabinet.find_by(cabins:params[:seatNumber])
+          redirect_to box_index_path, method:"get"
+          flash[:alert] = "이미 신청완료 된 사물함입니다."
+        else
+          Cabinet.create(cabins: params[:seatNumber], major: current_user.major, user_id: current_user.id)
+          redirect_to new_post_path, method: "get"
+          flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+        end
+      elsif params[:major] == "응용과학대학"
+        if CabinetApliSci.find_by(cabins_aplsci: params[:seatNumber])
+          redirect_to box_applsci_path, method:"get"
+          flash[:alert] = "이미 신청완료 된 사물함입니다."
+        else
+          CabinetApliSci.create(cabins_aplsci: params[:seatNumber], user_id: current_user.id)
+          redirect_to new_post_path, method: "get"
+          flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+        end
+      end
+    elsif (current_user.major == "응용물리학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
+      if CabinetApliSci.find_by(cabins_aplsci: params[:seatNumber])
+        redirect_to box_applsci_path, method:"get"
+        flash[:alert] = "이미 신청완료 된 사물함입니다."
+      else
+        CabinetApliSci.create(cabins_aplsci: params[:seatNumber], user_id: current_user.id)
+        redirect_to new_post_path, method: "get"
+        flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+      end
     else
-      Cabinet.create(cabins: params[:seatNumber], major: current_user.major, user_id: current_user.id)
-      current_user.seatNumber = params[:seatNumber]
-      current_user.save
-      redirect_to new_post_path, method: "get"
-      flash[:success] = "#{current_user.seatNumber}번 사물함이 신청되었습니다."
+      if CabinetIme.find_by(cabins_ime: params[:seatNumber])
+        redirect_to box_ime_path, method:"get"
+        flash[:alert] = "이미 신청완료 된 사물함입니다."
+      else
+        CabinetIme.create(cabins_ime: params[:seatNumber], user_id: current_user.id)
+        redirect_to new_post_path, method: "get"
+        flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+      end
     end
   end
 
-  def destroy
-    user = User.find(params[:id])
-    cabinet = Cabinet.find_by(cabins: user.seatNumber)
-    cabinet.destroy
-    user.seatNumber = nil
-    user.save
+  def destroy_apli_chem
 
+    cabinet = Cabinet.find_by(user_id: params[:id])
+    cabinet.destroy
+    redirect_to new_post_path
+
+    flash[:warning] = "사물함이 취소되었습니다."
+  end
+
+  def destroy_apli_sci
+    cabinet = CabinetApliSci.find_by(user_id: params[:id])
+    cabinet.destroy
+    redirect_to new_post_path
+
+    flash[:warning] = "사물함이 취소되었습니다."
+  end
+
+  def destroy_ime
+    cabinet = CabinetIme.find_by(user_id: params[:id])
+    cabinet.destroy
     redirect_to new_post_path
 
     flash[:warning] = "사물함이 취소되었습니다."

@@ -15,13 +15,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
-  def user_apply?
-    if !current_user.seatNumber.nil?
-      redirect_to :root
-
-      flash[:alert] = "사물함을 이미 신청하셨습니다."
-    end
-  end
 
   def admin_not?
     if (current_user.identity != "admin")
@@ -32,19 +25,22 @@ class ApplicationController < ActionController::Base
 # 전공판단
 def applchem_not?
   if (current_user.major != "응용화학과")
-    redirect_to '/'
+    redirect_back(fallback_location: choose_index_path)
+    flash[:alert] = "응용화학과 관계자만 접근가능합니다. "
   end
 end
 
 def applsci_not?
-  if (current_user.major != "응용물리학과" || current_user.major != "응용수학과" || current_user.major != "응용화학과" || current_user.major != "우주과학과")
-    redirect_to '/'
+  if !(current_user.major == "응용화학과" || current_user.major == "응용물리학과" || current_user.major == "응용수학과" || current_user.major == "우주과학과")
+    redirect_back(fallback_location: choose_index_path)
+    flash[:alert] = "응용물리대학 관계자만 접근가능합니다. "
   end
 end
 
 def ime_not?
   if (current_user.major != "산업경영공학과")
-    redirect_to '/'
+    redirect_back(fallback_location: choose_index_path)
+    flash[:alert] = "산업경영공학과 관계자만 접근가능합니다. "
   end
 end
 

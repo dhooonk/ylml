@@ -1,27 +1,7 @@
 <!-- Intro Section -->
 
 <section id="intro" class="intro-section">
-  <% if user_signed_in? %>
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <div class="panel-title">
-          <div class ="title">
-            <%= current_user.major %> 사물함 신청기간<br/>
-            <% if current_major? %>
-            학부생  &nbsp: <%= @limit.student_time.chomp("+0900") %>~ <%= @limit.student_time_.chomp("+0900") %><br/>
-            대학원생 : <%= @limit.gda_time.chomp("+0900") %>~ <%= @limit.gda_time_.chomp("+0900") %><br/>
-            <small>*학생회비 수납자에 한하여 사물함 신청이 가능합니다.</small>
-            <small>*응용과학대학 개발중</small>
-            <% else %>
-              <small>*해당 학과는 이 서비스를 지원받지 않습니다.</small>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% else %>
     <div class="wall"></div>
-  <% end %>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -177,7 +157,9 @@
        </div>
      <div class="col-lg-8 col-xs-12">
           <h1><strong id="service">서비스 학교 및 공공시설</strong></h1>
-          <h4>경희대학교 응용화학과</h4>
+          <h4>경희대학교  응용과학대학</h4>
+          <h4>경희대학교    응용화학과</h4>
+          <h4>경희대학교 산업경영공학과</h4>
         </div>
         <div class="col-lg-12 col-xs-12">
           <img class="icon" src="assets/icon.gif" align="left">

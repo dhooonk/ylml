@@ -64,10 +64,24 @@
                     <% else %>
                       <td><%= u_i.stuN %></td>
                     <% end %>
-                    <% if u_i.seatNumber == nil%>
-                      <td>미신청</td>
+                    <% if current_user.major == "응용화학과" %>
+                      <% if u_i.cabinet == nil%>
+                        <td>미신청</td>
+                      <% else %>
+                        <td><%= u_i.cabinet.cabins %></td>
+                      <% end %>
+                    <% elsif current_user.major == "산업경영공학과"%>
+                      <% if u_i.cabinetIme == nil%>
+                        <td>미신청</td>
+                      <% else %>
+                        <td><%= u_i.cabinetIme.cabins_ime %></td>
+                      <% end %>
                     <% else %>
-                      <td><%= u_i.seatNumber %></td>
+                      <% if u_i.cabinetApliSci == nil%>
+                        <td>미신청</td>
+                      <% else %>
+                        <td><%= u_i.cabinetApliSci.cabins_aplsci %></td>
+                      <% end %>
                     <% end %>
                     <td>
                         <%= link_to "[변경]",edit_admin_path(u_i.id), method:"get", data: {confirm: "비밀번호가 '123456'으로 변경됩니다. 정말 변경하시겠습니까?"} %>

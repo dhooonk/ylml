@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root "posts#index"
   resources :posts, only: [:index, :new]
-  resources :box, only: [:index, :create, :destroy]
+  resources :box, only: [:index, :create]
   get "/box/index" =>"box#index"
   get "/box/applsci" =>"box#applsci"
   get "/box/ime" =>"box#ime"
+  delete "/box/destroy_apli_chem/:id" => "box#destroy_apli_chem"
+  delete "/box/destroy_apli_sci/:id" =>"box#destroy_apli_sci"
+  delete "/box/destroy_ime/:id" =>"box#destroy_ime"
   resources :admin, only: [:index, :destroy, :edit]
   delete "/destroy_all/:id" => "admin#destroy_all"
   resources :choose, only: [:index]

@@ -26,7 +26,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
@@ -47,10 +47,11 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
+                    <input type = "hidden" value = "산업경영공학과"/>
                   <% end %>
                 <% end %>
               </td>
@@ -68,10 +69,11 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
+                    <input type = "hidden" value = "산업경영공학과"/>
                   <% end %>
                 <% end %>
               </td>
@@ -91,7 +93,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
@@ -112,7 +114,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
@@ -133,7 +135,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
@@ -156,7 +158,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
@@ -176,7 +178,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
@@ -196,7 +198,7 @@
             <% num.each do |n| %>
               <td>
                 <%= form_tag box_index_path, id:"box" do %>
-                  <% if !!Cabinet.find_by(cabins:"#{n}") %>
+                  <% if !!CabinetIme.find_by(cabins_ime:"#{n}") %>
                     <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
                   <% else %>
                     <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
