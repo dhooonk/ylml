@@ -7,8 +7,7 @@ class CsvController < ApplicationController
   end
 
   def create
-    user = User.new(name:params[:name], stuN:params[:stuN], email:params[:email],
-                password:params[:password], identity: params[:identity])
+    user = User.new(name: params[:name], stuN: params[:stuN], email: params[:email], major: params[:major], password: params[:password], identity: params[:identity])
 
     if user.save
       redirect_to csv_index_path, method: "get"

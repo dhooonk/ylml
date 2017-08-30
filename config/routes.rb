@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :posts, only: [:index, :new]
   resources :box, only: [:index, :create, :destroy]
+  get "/box/index" =>"box#index"
+  get "/box/applsci" =>"box#applsci"
+  get "/box/ime" =>"box#ime"
   resources :admin, only: [:index, :destroy, :edit]
   delete "/destroy_all/:id" => "admin#destroy_all"
   resources :choose, only: [:index]
