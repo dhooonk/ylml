@@ -1,0 +1,59 @@
+<div id="page-wrapper">
+  <div class="container container-fluid">
+    <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">
+              가입신청 현황<small>Subscription Status</small>
+          </h1>
+
+          <div class="container">
+            <a href="/tempusers/index" type="button" class="btn btn-default"> 기본 양식 </a>
+            <a href="/tempusers/indexE" type="button" class="btn btn-default"> 엑셀 양식 </a>
+<div class="table-responsive">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th class="admin_index"><strong>번호</strong></th>
+        <th class="admin_index"><strong>이름</strong></th>
+        <th class="admin_index"><strong>학과</strong></th>
+        <th class="admin_index"><strong>학번</strong></th>
+        <th class="admin_index"><strong>권한</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tempusers.each do |i| %>
+        <tr>
+          <td>
+            <%= i.id %>
+          </td>
+          <td>
+            <%= i.name %>
+          </td>
+          <td>
+            <%= i.major %>
+          </td>
+            <td>
+              <%= i.stuN %>
+            </td>
+          <td>
+            <% if i.identity == "1" %>
+              학부생
+            <% elsif i.identity == "2" %>
+              대학원생
+            <% elsif i.identity == "3" %>
+              교수
+            <% else %>
+              관리자
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

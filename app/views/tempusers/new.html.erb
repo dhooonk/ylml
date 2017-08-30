@@ -1,0 +1,16 @@
+<div class="wall"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <%= image_tag("logo.gif", id: "logo")%>
+    <%= simple_form_for @tempuser, :url => tempusers_create_path do |f| %>
+    <%= f.input :name, required: true, autofocus: true, label: "이름" %>
+    <%= f.input :major, required: true, as: :radio_buttons, :collection => [ "응용화학과", "응용물리학과", "응용수학과", "우주과학과", "산업경영공학과" ], label: "학과"%>
+    <%= f.input :identity, required: true, as: :radio_buttons, :collection => [[ "학부생", "1"], ["대학원생","2"], ["교수","3"]],  label: "권한"%>
+    <%= f.input :stuN, required: true, label: "학번", placeholder: '2013101234'%>
+    <%= f.button :submit, value: "가입신청하기" %>
+    <% end %>
+  </div>
+  </div>
+  <div class="wall"></div>
+</div>

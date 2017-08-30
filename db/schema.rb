@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 20170830063946) do
     t.string "gda_time_"
   end
 
+  create_table "tempusers", force: :cascade do |t|
+    t.string "name"
+    t.string "stuN"
+    t.string "major"
+    t.string "identity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: ""
     t.string "encrypted_password", default: "", null: false
