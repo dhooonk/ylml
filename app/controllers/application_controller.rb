@@ -34,7 +34,7 @@ end
 def applsci_not?
   if !(current_user.major == "응용화학과" || current_user.major == "응용물리학과" || current_user.major == "응용수학과" || current_user.major == "우주과학과")
     redirect_back(fallback_location: choose_index_path)
-    flash[:alert] = "응용물리대학 관계자만 접근가능합니다. "
+    flash[:alert] = "응용과학대학 관계자만 접근가능합니다. "
   end
 end
 

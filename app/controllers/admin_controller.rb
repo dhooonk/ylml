@@ -57,7 +57,7 @@ class AdminController < ApplicationController
     user.password='123456'
     user.password_confirmation='123456'
     user.save
-    flash[:warning] = "'#{user.name}'사용자의 계정(#{user.email}) 비밀번호가 변경되었습니다."
+    flash[:warning] = "'#{user.name}'사용자의 계정(#{user.stuN}) 비밀번호가 변경되었습니다."
     redirect_to admin_index_path
   end
 end
