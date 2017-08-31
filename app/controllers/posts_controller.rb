@@ -9,4 +9,8 @@ class PostsController < ApplicationController
 
   def new
   end
+  def privacy
+  end
+  def partner
+  end
 end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
         put 'users' => 'devise/registrations#update', :as => 'user_registration'
       end
     root "posts#index"
+    get "/posts/privacy" =>"posts#privacy"
+    get "/posts/partner" =>"posts#partner"
     resources :posts, only: [:index, :new]
     resources :box, only: [:index, :create, :destroy]
     get "/box/index" =>"box#index"
