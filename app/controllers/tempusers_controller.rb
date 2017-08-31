@@ -22,7 +22,7 @@ class TempusersController < ApplicationController
                       stuN: params[:tempuser][:stuN],
                       feeOfSch: params[:tempuser][:feeOfSch])
         redirect_to '/'
-        flash[:alert] = "가입요청이 처리되었습니다."
+        flash[:success] = "가입요청이 처리되었습니다."
       else
         redirect_to '/'
         flash[:alert] = "이미 존재하는 회원정보입니다."

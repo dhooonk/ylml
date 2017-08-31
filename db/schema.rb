@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170831050755) do
     t.string "identity", default: "1"
     t.string "major"
     t.string "stuN"
+    t.boolean "applied_sci_admin", default: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stuN"], name: "index_users_on_stuN", unique: true
   end

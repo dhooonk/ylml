@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h1 class="page-header">
-              신청현황<small>application condition</small>
+              신청현황<small>Application Condition</small>
           </h1>
           <%= flash[:notice] %>
           <%= flash[:caution] %>
@@ -60,11 +60,9 @@
                     <td>
                       <%= u_i.major %>
                     </td>
-                    <% if !!(u_i.identity == "admin") %>
-                      <td>관리자</td>
-                    <% else %>
-                      <td><%= u_i.stuN %></td>
-                    <% end %>
+                      <td>
+                        <%= u_i.stuN %>
+                      </td>
 
 
                     <% if current_user.major == "응용화학과" %>
