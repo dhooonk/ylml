@@ -14,23 +14,47 @@ class TempusersController < ApplicationController
       # @tempuser.identity = params[:identity]
       # @tempuser.stuN = params[:stuN]
       # @tempuser.save
-      @user=User.find_by(stuN: params[:stuN])
+      @user=User.find_by(stuN: params[:tempuser][:stuN])
       if @user.nil?
         Tempuser.create(name: params[:tempuser][:name],
                       major: params[:tempuser][:major],
                       identity: params[:tempuser][:identity],
-                      stuN: params[:tempuser][:stuN])
+                      stuN: params[:tempuser][:stuN],
+                      feeOfSch: params[:tempuser][:feeOfSch])
+        redirect_to '/'
+        flash[:alert] = "가입요청이 처리되었습니다."
+      else
+        redirect_to '/'
+        flash[:alert] = "이미 존재하는 회원정보입니다."
       end
-
-      redirect_to '/'
     end
 
     def index
-      @tempusers = Tempuser.where(major: user_major?)
+      if user_major?.include?  "응용물리학과"
+        @tempusers = Tempuser.where(major: user_major?)
+      else
+        @tempusers = []
+        tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
+        tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
+        tmp1.each_with_index do |a,i|
+          @tempusers << a
+          @tempusers << tmp2[i]
+        end
+      end
     end
 
     def indexE
-      @tempusers = Tempuser.where(major: user_major?)
+      if user_major?.include?  "응용물리학과"
+        @tempusers = Tempuser.where(major: user_major?)
+      else
+        @tempusers = []
+        tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
+        tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
+        tmp1.each_with_index do |a,i|
+          @tempusers << a
+          @tempusers << tmp2[i]
+        end
+      end
     end
 
 end

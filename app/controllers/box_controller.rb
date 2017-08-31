@@ -2,14 +2,15 @@ class BoxController < ApplicationController
   before_action :authenticate_user!
   before_action :ordinary_user_not?, except: [:destroy]
   before_action :access_okay?
-  before_action :applchem_not?, only: [:index]
-  before_action :applsci_not?, only: [:applsci]
-  before_action :ime_not?, only: [:ime]
-  before_action :authenticate_admin!, except: [:destroy]
-  before_action :authenticate_admin_ver_destroy!, only: [:destroy]
-  before_action :user_apply?, except: [:destroy_apli_chem, :destroy_apli_sci, :destroy_ime]
-  before_action :user_apply_chem?, only: [:index]
-  before_action :user_apply_chem_aplisci?, only: [:applsci]
+  before_action :applchem_not?, only: [:index, :destroy_apli_chem]
+  before_action :applsci_not?, only: [:applsci, :destroy_apli_sci]
+  before_action :ime_not?, only: [:ime, :destroy_ime]
+  before_action :authenticate_admin_ime!, only: [:ime, :destroy_ime]
+  before_action :authenticate_admin_chem!, only: [:index, :destroy_apli_chem]
+  before_action :authenticate_admin_aplsci!, only: [:applsci, :destroy_apli_sci]
+  before_action :user_apply?, only: [:applsci, :ime, :create]
+  before_action :user_apply_chem1?, only: [:index, :create]
+  before_action :user_apply_chem2?, only: [:index, :create]
 
 
   def index
@@ -111,11 +112,11 @@ class BoxController < ApplicationController
   def create
     if current_user.major == "응용화학과"
       if params[:major] == "응용화학과"
-        if Cabinet.find_by(cabins:params[:seatNumber])
+        if Cabinet.find_by(cabin:params[:seatNumber])
           redirect_to box_index_path, method:"get"
           flash[:alert] = "이미 신청완료 된 사물함입니다."
         else
-          Cabinet.create(cabins: params[:seatNumber], major: current_user.major, user_id: current_user.id)
+          Cabinet.create(cabin: params[:seatNumber], major: current_user.major, user_id: current_user.id)
           redirect_to new_post_path, method: "get"
           flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
         end
@@ -176,22 +177,32 @@ class BoxController < ApplicationController
   end
 
   private
-  def authenticate_admin!
+  def authenticate_admin_chem!
     if (current_user.identity != "admin") && (current_user.identity != "3")
-      if (current_time > Time.now) || (Time.now > final_time)
-        redirect_to root_path
+      if (current_time1 > Time.now) || (Time.now > final_time1)
+        redirect_to choose_index_path
         flash[:alert] = "신청기간이 아닙니다."
       end
     end
   end
 
-  def authenticate_admin_ver_destroy!
+  def authenticate_admin_aplsci!
     if (current_user.identity != "admin") && (current_user.identity != "3")
-      if (current_time > Time.now) || (Time.now > final_time)
-        redirect_to root_path
-        flash[:alert] = "신청기간이 아니므로 사물함 취소가 불가합니다. 학생회에 문의하세요."
+      if (current_time2 > Time.now) || (Time.now > final_time2)
+        redirect_to choose_index_path
+        flash[:alert] = "신청기간이 아닙니다."
       end
     end
   end
+
+  def authenticate_admin_ime!
+    if (current_user.identity != "admin") && (current_user.identity != "3")
+      if (current_time3 > Time.now) || (Time.now > final_time3)
+        redirect_to choose_index_path
+        flash[:alert] = "신청기간이 아닙니다."
+      end
+    end
+  end
+
   ##
 end

@@ -15,12 +15,21 @@
                             <h4><div class="huge">경희대학교 응용화학과</div></h4>
                             <div>경희대학교 공과대학 4층</div>
                             <% if current_user.identity != "3" %>
-                              <% if @start_time1 > Time.now %>
-                                <span class="label label-warning">접수전</span>
-                              <% elsif @start_time1 <= Time.now && @finish_time1 >= Time.now %>
-                                <span class="label label-success">접수중</span>
+                              <% if @time_1.student_time > Time.now %>
+                                <span class="label label-warning">학부생 접수전</span>
+                              <% elsif @time_1.student_time <= Time.now && @time_1.student_time_ >= Time.now %>
+                                <span class="label label-success">학부생 접수중</span>
                               <% else %>
-                                <span class="label label-danger">접수완료</span>
+                                <span class="label label-danger">학부생 접수완료</span>
+                              <% end %>
+                            <% end %>
+                            <% if current_user.identity != "3" %>
+                              <% if @time_1.gda_time > Time.now %>
+                                <span class="label label-warning">대학원생 접수전</span>
+                              <% elsif @time_1.gda_time <= Time.now && @time_1.gda_time_ >= Time.now %>
+                                <span class="label label-success">대학원생 접수중</span>
+                              <% else %>
+                                <span class="label label-danger">대학원생 접수완료</span>
                               <% end %>
                             <% end %>
                        </div>
@@ -28,7 +37,8 @@
                 </div>
                 <div class="panel-footer">
                     <% if current_user.identity != "3" %>
-                      <span class="pull-left"><small>신청기간: <%= @start_time1.chomp("+0900")%>~<%= @finish_time1.chomp("+0900")%></small></span>
+                      <span class="pull-left"><small>학부생 신청기간: <%= @time_1.student_time.chomp("+0900")%>~<%=  @time_1.student_time_.chomp("+0900")%></small></span>
+                      <span class="pull-left"><small>대학원생 신청기간: <%= @time_1.gda_time.chomp("+0900")%>~<%= @time_1.gda_time_.chomp("+0900")%></small></span>
                     <% else %>
                       <span class="pull-left">신청하기</span>
                     <% end %>
@@ -50,12 +60,21 @@
                           <h4><div class="huge">경희대학교 응용과학대학</div></h4>
                           <div>경희대학교 전자정보대학/응용과학대학 1층</div>
                           <% if current_user.identity != "3" %>
-                            <% if @start_time2 > Time.now %>
-                              <span class="label label-warning">접수전</span>
-                            <% elsif @start_time2 <= Time.now && @finish_time2 >= Time.now %>
-                              <span class="label label-success">접수중</span>
+                            <% if @time_2.student_time > Time.now %>
+                              <span class="label label-warning">학부생 접수전</span>
+                            <% elsif @time_2.student_time <= Time.now && @time_2.student_time_ >= Time.now %>
+                              <span class="label label-success">학부생 접수중</span>
                             <% else %>
-                              <span class="label label-danger">접수완료</span>
+                              <span class="label label-danger">학부생 접수완료</span>
+                            <% end %>
+                          <% end %>
+                          <% if current_user.identity != "3" %>
+                            <% if @time_2.gda_time > Time.now %>
+                              <span class="label label-warning">대학원생 접수전</span>
+                            <% elsif @time_2.gda_time <= Time.now && @time_2.gda_time_ >= Time.now %>
+                              <span class="label label-success">대학원생 접수중</span>
+                            <% else %>
+                              <span class="label label-danger">대학원생 접수완료</span>
                             <% end %>
                           <% end %>
                         </div>
@@ -63,7 +82,8 @@
                 </div>
                     <div class="panel-footer">
                         <% if current_user.identity != "3" %>
-                          <span class="pull-left"><small>신청기간: <%= @start_time2.chomp("+0900")%>~<%= @finish_time2.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>학부생 신청기간: <%= @time_2.student_time.chomp("+0900")%>~<%= @time_2.student_time_.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_2.gda_time.chomp("+0900")%>~<%= @time_2.gda_time_.chomp("+0900")%></small></span>
                         <% else %>
                           <span class="pull-left">신청하기</span>
                         <% end %>
@@ -85,12 +105,21 @@
                           <h4><div class="huge">경희대학교 산업경영공학과</div></h4>
                           <div>경희대학교 공과대학 1층</div>
                           <% if current_user.identity != "3" %>
-                            <% if @start_time3 > Time.now %>
-                              <span class="label label-warning">접수전</span>
-                            <% elsif @start_time3 <= Time.now && @finish_time3 >= Time.now %>
-                              <span class="label label-success">접수중</span>
+                            <% if @time_3.student_time > Time.now %>
+                              <span class="label label-warning">학부생 접수전</span>
+                            <% elsif @time_3.student_time <= Time.now && @time_3.student_time_ >= Time.now %>
+                              <span class="label label-success">학부생 접수중</span>
                             <% else %>
-                              <span class="label label-danger">접수완료</span>
+                              <span class="label label-danger">학부생 접수완료</span>
+                            <% end %>
+                          <% end %>
+                          <% if current_user.identity != "3" %>
+                            <% if @time_3.gda_time > Time.now %>
+                              <span class="label label-warning">대학원생 접수전</span>
+                            <% elsif @time_3.gda_time <= Time.now && @time_3.gda_time_ >= Time.now %>
+                              <span class="label label-success">대학원생 접수중</span>
+                            <% else %>
+                              <span class="label label-danger">대학원생 접수완료</span>
                             <% end %>
                           <% end %>
                         </div>
@@ -98,7 +127,8 @@
                 </div>
                     <div class="panel-footer">
                         <% if current_user.identity != "3" %>
-                          <span class="pull-left"><small>신청기간: <%= @start_time3.chomp("+0900")%>~<%= @finish_time3.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>학부생 신청기간: <%= @time_3.student_time.chomp("+0900")%>~<%= @time_3.student_time_.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_3.gda_time.chomp("+0900")%>~<%= @time_3.gda_time_.chomp("+0900")%></small></span>
                         <% else %>
                           <span class="pull-left">신청하기</span>
                         <% end %>

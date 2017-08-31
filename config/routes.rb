@@ -17,10 +17,8 @@ Rails.application.routes.draw do
     get '/tempusers/index' => 'tempusers#index'
     get '/tempusers/indexE' => 'tempusers#indexE'
     resources :csv, only: [:index, :create] do
-    collection { post :import }
-
-
-  end
+      collection { post :import }
+    end
   resources :limits, only: [:edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -34,7 +34,8 @@
                   <th class="admin_index"><strong>이름</strong></th>
                   <th class="admin_index"><strong>학과</strong></th>
                   <th class="admin_index"><strong>학번</strong></th>
-                  <th class="admin_index"><strong>신청한 사물함</strong></th>
+                  <th class="admin_index"><strong>신청 사물함(학과)</strong></th>
+                  <th class="admin_index"><strong>신청 사물함(단과대)</strong></th>
                   <th class="admin_index"><strong>비밀번호 변경</strong></th>
                   <th class="admin_index"><strong>계정삭제</strong></th>
                 </tr>
@@ -64,25 +65,38 @@
                     <% else %>
                       <td><%= u_i.stuN %></td>
                     <% end %>
+
+
                     <% if current_user.major == "응용화학과" %>
                       <% if u_i.cabinet == nil%>
                         <td>미신청</td>
                       <% else %>
-                        <td><%= u_i.cabinet.cabins %></td>
+                        <td><%= u_i.cabinet.cabin %></td>
                       <% end %>
-                    <% elsif current_user.major == "산업경영공학과"%>
-                      <% if u_i.cabinetIme == nil%>
-                        <td>미신청</td>
-                      <% else %>
-                        <td><%= u_i.cabinetIme.cabins_ime %></td>
-                      <% end %>
-                    <% else %>
                       <% if u_i.cabinetApliSci == nil%>
                         <td>미신청</td>
                       <% else %>
                         <td><%= u_i.cabinetApliSci.cabins_aplsci %></td>
                       <% end %>
+                    <% elsif current_user.major == "산업경영공학과"%>
+                      <% if u_i.cabinetIme == nil%>
+                        <td>미신청</td>
+                        <td>신청불가</td>
+                      <% else %>
+                        <td><%= u_i.cabinetIme.cabins_ime %></td>
+                        <td>신청불가</td>
+                      <% end %>
+                    <% else %>
+                      <% if u_i.cabinetApliSci == nil%>
+                        <td>신청불가</td>
+                        <td>미신청</td>
+                      <% else %>
+                        <td>신청불가</td>
+                        <td><%= u_i.cabinetApliSci.cabins_aplsci %></td>
+                      <% end %>
                     <% end %>
+
+
                     <td>
                         <%= link_to "[변경]",edit_admin_path(u_i.id), method:"get", data: {confirm: "비밀번호가 '123456'으로 변경됩니다. 정말 변경하시겠습니까?"} %>
                     </td>

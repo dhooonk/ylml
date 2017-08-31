@@ -7,7 +7,7 @@ class AdminController < ApplicationController
     if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
       @user_admin = User.where(major: user_major?).order('stuN ASC')
     else
-      @user_admin = User.where(major: user_major?).order('stuN ASC')
+      @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
     end
     if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
       if params[:order]== '사물함 순'
@@ -21,13 +21,13 @@ class AdminController < ApplicationController
       end
     else
       if params[:order]== '사물함 순'
-        @user_admin = User.where(major: user_major?).order('seatNumber ASC')
+        @user_admin = User.where.not(major: "산업경영공학과").order('seatNumber ASC')
       elsif params[:order]== '학번 순'
-        @user_admin = User.where(major: user_major?).order('stuN ASC')
+        @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
       elsif params[:order] == '이름 순'
-        @user_admin = User.where(major: user_major?).order('name ASC')
+        @user_admin = User.where.not(major: "산업경영공학과").order('name ASC')
       else
-        @user_admin = User.where(major: user_major?).order('identity DESC')
+        @user_admin = User.where.not(major: "산업경영공학과").order('identity DESC')
       end
     end
   end
@@ -44,12 +44,23 @@ class AdminController < ApplicationController
   end
 
   def destroy_all ##관리자 계정을 제외한 모든 계정 초기화 액션
-    users = User.where(major: user_major?)
-    users.where(identity: "1").destroy_all
-    users.where(identity: "2").destroy_all
-    users.where(identity: "3").destroy_all
-    flash[:warning] = "전체 계정 정보가 삭제 되었습니다."
-    redirect_to admin_index_path
+    if !((current_user.major == "산업경영공학과") || (current_user.major == "응용화학과"))
+      users = User.where(major: user_major?)
+      users2 = User.where(major: "응용화학과")
+      users2.each do |u|
+        users << u
+      end
+      users.where(identity: "1").destroy_all
+      users.where(identity: "2").destroy_all
+      users.where(identity: "3").destroy_all
+    else
+      users = User.where(major: user_major?)
+      users.where(identity: "1").destroy_all
+      users.where(identity: "2").destroy_all
+      users.where(identity: "3").destroy_all
+      flash[:warning] = "전체 계정 정보가 삭제 되었습니다."
+      redirect_to admin_index_path
+    end
   end
 
   def edit

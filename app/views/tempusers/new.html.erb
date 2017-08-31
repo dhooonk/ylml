@@ -5,9 +5,11 @@
     <%= image_tag("logo.gif", id: "logo")%>
     <%= simple_form_for @tempuser, :url => tempusers_create_path do |f| %>
     <%= f.input :name, required: true, autofocus: true, label: "이름" %>
+    <%= f.input :stuN, required: true, label: "학번", placeholder: '2013101234'%>
     <%= f.input :major, required: true, as: :radio_buttons, :collection => [ "응용화학과", "응용물리학과", "응용수학과", "우주과학과", "산업경영공학과" ], label: "학과"%>
     <%= f.input :identity, required: true, as: :radio_buttons, :collection => [[ "학부생", "1"], ["대학원생","2"], ["교수","3"]],  label: "권한"%>
-    <%= f.input :stuN, required: true, label: "학번", placeholder: '2013101234'%>
+    <%= f.input :feeOfSch, required: true, as: :radio_buttons, :collection => [[ "납부", true], ["미납",false]],  label: "학생회비 납부여부"%>
+    <small>*미납부자 가입신청 제한(학부생 외 '납부'선택)</small><br/>
     <%= f.button :submit, value: "가입신청하기" %>
     <% end %>
   </div>
