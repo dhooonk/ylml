@@ -47,12 +47,14 @@ class AdminController < ApplicationController
     if !((current_user.major == "산업경영공학과") || (current_user.major == "응용화학과"))
       users = User.where(major: user_major?)
       users2 = User.where(major: "응용화학과")
-      users2.each do |u|
-        users << u
-      end
       users.where(identity: "1").destroy_all
       users.where(identity: "2").destroy_all
       users.where(identity: "3").destroy_all
+      users2.where(identity: "1").destroy_all
+      users2.where(identity: "2").destroy_all
+      users2.where(identity: "3").destroy_all
+      flash[:warning] = "전체 계정 정보가 삭제 되었습니다."
+      redirect_to admin_index_path
     else
       users = User.where(major: user_major?)
       users.where(identity: "1").destroy_all
