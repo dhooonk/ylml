@@ -13,4 +13,7 @@ class PostsController < ApplicationController
   end
   def partner
   end
+  def redirect
+    redirect_to '/'
+  end
 end
