@@ -22,32 +22,89 @@
       </tr>
     </thead>
     <tbody>
-      <% @tempusers.each do |i| %>
-        <tr>
-          <td>
-            <%= i.id %>
-          </td>
-          <td>
-            <%= i.name %>
-          </td>
-          <td>
-            <%= i.major %>
-          </td>
+      <% if !(user_major?.include? "응용물리학과") %>
+        <% @tmp1.each do |a| %>
+          <tr>
             <td>
-              <%= i.stuN %>
+              <%= a.id %>
             </td>
-          <td>
-            <% if i.identity == "1" %>
-              학부생
-            <% elsif i.identity == "2" %>
-              대학원생
-            <% elsif i.identity == "3" %>
-              교수
-            <% else %>
-              관리자
-            <% end %>
-          </td>
-        </tr>
+            <td>
+              <%= a.name %>
+            </td>
+            <td>
+              <%= a.major %>
+            </td>
+              <td>
+                <%= a.stuN %>
+              </td>
+            <td>
+              <% if a.identity == "1" %>
+                학부생
+              <% elsif a.identity == "2" %>
+                대학원생
+              <% elsif a.identity == "3" %>
+                교수
+              <% else %>
+                관리자
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <% @tmp2.each do |a| %>
+          <tr>
+            <td>
+              <%= a.id %>
+            </td>
+            <td>
+              <%= a.name %>
+            </td>
+            <td>
+              <%= a.major %>
+            </td>
+              <td>
+                <%= a.stuN %>
+              </td>
+            <td>
+              <% if a.identity == "1" %>
+                학부생
+              <% elsif a.identity == "2" %>
+                대학원생
+              <% elsif a.identity == "3" %>
+                교수
+              <% else %>
+                관리자
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <% @tempusers.each do |i| %>
+          <tr>
+            <td>
+              <%= i.id %>
+            </td>
+            <td>
+              <%= i.name %>
+            </td>
+            <td>
+              <%= i.major %>
+            </td>
+              <td>
+                <%= i.stuN %>
+              </td>
+            <td>
+              <% if i.identity == "1" %>
+                학부생
+              <% elsif i.identity == "2" %>
+                대학원생
+              <% elsif i.identity == "3" %>
+                교수
+              <% else %>
+                관리자
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

@@ -33,13 +33,8 @@ class TempusersController < ApplicationController
       if user_major?.include?  "응용물리학과"
         @tempusers = Tempuser.where(major: user_major?)
       else
-        @tempusers = []
-        tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
-        tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
-        tmp1.each_with_index do |a,i|
-          @tempusers << a
-          @tempusers << tmp2[i]
-        end
+        @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
+        @tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
       end
     end
 
@@ -47,13 +42,8 @@ class TempusersController < ApplicationController
       if user_major?.include?  "응용물리학과"
         @tempusers = Tempuser.where(major: user_major?)
       else
-        @tempusers = []
-        tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
-        tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
-        tmp1.each_with_index do |a,i|
-          @tempusers << a
-          @tempusers << tmp2[i]
-        end
+        @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
+        @tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
       end
     end
 
