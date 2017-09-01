@@ -34,7 +34,8 @@ class TempusersController < ApplicationController
         @tempusers = Tempuser.where(major: user_major?)
       else
         @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
-        @tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
+        @tmp2 = Tempuser.where(major: user_major?, identity: "2")
+        @tmp3 = Tempuser.where(major: user_major?, identity: "3")
       end
     end
 
@@ -43,7 +44,8 @@ class TempusersController < ApplicationController
         @tempusers = Tempuser.where(major: user_major?)
       else
         @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
-        @tmp2 = Tempuser.where(major: user_major?, identity: "2", identity: "3")
+        @tmp2 = Tempuser.where(major: user_major?, identity: "2")
+        @tmp3 = Tempuser.where(major: user_major?, identity: "3")
       end
     end
 

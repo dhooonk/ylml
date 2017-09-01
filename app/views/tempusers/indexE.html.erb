@@ -22,32 +22,92 @@
       </tr>
     </thead>
     <tbody>
-      <% @tempusers.each do |i| %>
-        <tr>
-          <td>
-            <%= i.name %>
-          </td>
-          <td>
-            <%= i.major %>
-          </td>
+      <% if !(current_user.major.include? "응용물리학과") %>
+        <% @tmp1.each do |a| %>
+          <tr>
+            <td>
+              <%= a.name %>
+            </td>
+            <td>
+              <%= a.major %>
+            </td>
+            <td>
+              <%= a.stuN %>
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              <%= a.stuN %>
+            </td>
+          </tr>
+        <% end %>
+        <% @tmp2.each do |a| %>
+          <tr>
+            <td>
+              <%= a.name %>
+            </td>
+            <td>
+              <%= a.major %>
+            </td>
+            <td>
+              <%= a.stuN %>
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              <%= a.stuN %>
+            </td>
+          </tr>
+        <% end %>
+        <% @tmp3.each do |a| %>
+          <tr>
+            <td>
+              <%= a.name %>
+            </td>
+            <td>
+              <%= a.major %>
+            </td>
+            <td>
+              <%= a.stuN %>
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              <%= a.stuN %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <% @tempusers.each do |i| %>
+          <tr>
+            <td>
+              <%= i.name %>
+            </td>
+            <td>
+              <%= i.major %>
+            </td>
+              <td>
+                <%= i.stuN %>
+              </td>
+            <td>
+              <% if i.identity == "1" %>
+                1
+              <% elsif i.identity == "2" %>
+                2
+              <% elsif i.identity == "3" %>
+                3
+              <% else %>
+                admin
+              <% end %>
+            </td>
             <td>
               <%= i.stuN %>
             </td>
-          <td>
-            <% if i.identity == "1" %>
-              1
-            <% elsif i.identity == "2" %>
-              2
-            <% elsif i.identity == "3" %>
-              3
-            <% else %>
-              admin
-            <% end %>
-          </td>
-          <td>
-            <%= i.stuN %>
-          </td>
-        </tr>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
