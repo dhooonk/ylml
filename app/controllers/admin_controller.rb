@@ -4,30 +4,36 @@ class AdminController < ApplicationController
 
   def index
     @head = true
-    if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
-      @user_admin = User.where(major: user_major?).order('stuN ASC')
-    else
-      @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
-    end
-    if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
-      if params[:order]== '사물함 순'
-        @user_admin = User.where(major: user_major?).order('seatNumber ASC')
-      elsif params[:order]== '학번 순'
+    if params[:order].nil?
+      if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
         @user_admin = User.where(major: user_major?).order('stuN ASC')
-      elsif params[:order] == '이름 순'
-        @user_admin = User.where(major: user_major?).order('name ASC')
       else
-        @user_admin = User.where(major: user_major?).order('identity DESC')
+        @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
       end
     else
-      if params[:order]== '사물함 순'
-        @user_admin = User.where.not(major: "산업경영공학과").order('seatNumber ASC')
-      elsif params[:order]== '학번 순'
-        @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
-      elsif params[:order] == '이름 순'
-        @user_admin = User.where.not(major: "산업경영공학과").order('name ASC')
+      if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
+        if params[:order]== '사물함 순'
+          @user_admin = User.where(major: user_major?).order('seatNumber ASC')
+        elsif params[:order]== '학번 순'
+          @user_admin = User.where(major: user_major?).order('stuN ASC')
+        elsif params[:order] == '이름 순'
+          @user_admin = User.where(major: user_major?).order('name ASC')
+        else params[:order] == '권한 순'
+          @user_admin = User.where(major: user_major?).order('identity DESC')
+        end
       else
-        @user_admin = User.where.not(major: "산업경영공학과").order('identity DESC')
+        if params[:order]== '사물함 순'
+          @user_admin = User.where.not(major: "산업경영공학과").order('seatNumber ASC')
+        elsif params[:order]== '학번 순'
+          @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
+        elsif params[:order] == '이름 순'
+          @user_admin = User.where.not(major: "산업경영공학과").order('name ASC')
+        elsif params[:order] == '권한 순'
+          @user_admin = User.where.not(major: "산업경영공학과").order('identity DESC')
+        else
+          users= User.where.not(major: "산업경영공학과")
+          @user_admin = users.order('major DESC')
+        end
       end
     end
   end
