@@ -23,7 +23,12 @@
                   <li><input id="btnIndrop" class="btn btn-default" type="submit" value="학과 순" name="order"></li>
                 <% end %>
                 <li><input id="btnIndrop" class="btn btn-default" type="submit" value="학번 순" name="order"></li>
-                <li><input id="btnIndrop" class="btn btn-default" type="submit" value="사물함 순" name="order"></li>
+                <% if user_major? == "응용화학과" %>
+                  <li><input id="btnIndrop" class="btn btn-default" type="submit" value="사물함(학과) 순" name="order"></li>
+                  <li><input id="btnIndrop" class="btn btn-default" type="submit" value="사물함(단과대) 순" name="order"></li>
+                <% else %>
+                  <li><input id="btnIndrop" class="btn btn-default" type="submit" value="사물함 순" name="order"></li>
+                <% end %>
               </ul>
             </div>
           <% end %>
