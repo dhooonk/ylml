@@ -14,8 +14,9 @@ class TempusersController < ApplicationController
       # @tempuser.identity = params[:identity]
       # @tempuser.stuN = params[:stuN]
       # @tempuser.save
+
       @user=User.find_by(stuN: params[:tempuser][:stuN])
-      if @user.nil?
+      if @user.nil? && (params[:tempuser][:stuN].length == 10)
         Tempuser.create(name: params[:tempuser][:name],
                       major: params[:tempuser][:major],
                       identity: params[:tempuser][:identity],
@@ -23,9 +24,12 @@ class TempusersController < ApplicationController
                       feeOfSch: params[:tempuser][:feeOfSch])
         redirect_to '/'
         flash[:success] = "가입요청이 처리되었습니다."
-      else
-        redirect_to '/'
+      elsif @user.present?
         flash[:alert] = "이미 존재하는 회원정보입니다."
+        render :template => "/tempusers/new", :locals => {:@tempuser => Tempuser.new}
+      else
+        flash[:alert] = "학번을 다시 입력해주세요."
+        render :template => "/tempusers/new", :locals => {:@tempuser => Tempuser.new}
       end
     end
 
