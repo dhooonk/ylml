@@ -9,7 +9,7 @@
           <div class="container">
             <a href="/tempusers/index" type="button" class="btn btn-default"> 기본 양식 </a>
             <a href="/tempusers/indexE" type="button" class="btn btn-default"> 엑셀 양식 </a>
-            <a href="https://docs.google.com/spreadsheets/u/0/" type="button" class="btn btn-default"> Google Sheets </a>
+            <a href="https://docs.google.com/spreadsheets/u/0/" target="_blank" type="button" class="btn btn-default"> Google Sheets </a>
 <div class="table-responsive">
   <table class="table table-condensed">
     <thead>
@@ -22,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      <% if !(current_user.major.include? "응용물리학과") %>
+      <% if !(user_major?.include? "응용물리학과") %>
         <% @tmp1.each do |a| %>
           <tr>
             <td>
