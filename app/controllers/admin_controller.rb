@@ -20,6 +20,8 @@ class AdminController < ApplicationController
           @user_admin = User.where.not(major: "산업경영공학과").order('name ASC')
         elsif params[:order] == '권한 순'
           @user_admin = User.where.not(major: "산업경영공학과").order('identity DESC')
+        elsif params[:order] == '납부 순'
+          @user_admin = User.where.not(major: "산업경영공학과").order('feeOfSch DESC')
         else
           @user_admin = User.where.not(major: "산업경영공학과").order('major DESC')
         end
@@ -32,6 +34,8 @@ class AdminController < ApplicationController
           @user_admin = User.where(major: user_major?).order('stuN ASC')
         elsif params[:order] == '이름 순'
           @user_admin = User.where(major: user_major?).order('name ASC')
+        elsif params[:order] == '납부 순'
+          @user_admin = User.where(major: user_major?).order('feeOfSch DESC')
         elsif params[:order] == '권한 순'
           @user_admin = User.where(major: user_major?).order('identity DESC')
         end
@@ -42,6 +46,8 @@ class AdminController < ApplicationController
           @user_admin = User.where(major: user_major?).order('stuN ASC')
         elsif params[:order] == '이름 순'
           @user_admin = User.where(major: user_major?).order('name ASC')
+        elsif params[:order] == '납부 순'
+          @user_admin = User.where(major: user_major?).order('feeOfSch DESC')
         elsif params[:order] == '권한 순'
           @user_admin = User.where(major: user_major?).order('identity DESC')
         end
