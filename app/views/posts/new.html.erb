@@ -15,6 +15,7 @@
               <th class = "new_html"><strong>비밀번호</strong></th>
               <th class = "new_html"><strong>학과사물함</strong></th>
               <th class = "new_html"><strong>단과대학사물함</strong></th>
+              <th class = "new_html"><strong>납부여부</strong></th>
             </tr>
             <tr class = "new_html">
                 <% if current_user.identity == "1" %>
@@ -66,6 +67,13 @@
                 <th class = "new_html">관리자 신청불가</th>
                 <th class = "new_html">관리자 신청불가</th>
               <% end %>
+              <th class = "new_html">
+                <% if current_user.feeOfSch == true%>
+                  납부
+                <% else %>
+                  미납
+                <% end %>
+              </th>
             </tr>
           </table>
         </div>

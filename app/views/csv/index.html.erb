@@ -37,6 +37,7 @@
               <th><strong>학생회비</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>비밀번호</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>비밀번호 확인</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>납부여부</strong></th>
               <th><strong>권한부여</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
             </tr>
           </thead>
@@ -49,11 +50,11 @@
                 <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><input type = "radio" name = "major" value="응용화학과">응용화학과</li>
-                <li><input type = "radio" name = "major" value="응용물리학과">응용물리학과</li>
-                <li><input type = "radio" name = "major" value="응용수학과">응용수학과</li>
-                <li><input type = "radio" name = "major" value="우주과학과">우주과학과</li>
-                <li><input type = "radio" name = "major" value="산업경영공학과">산업경영공학과</li>
+                  <li><input type = "radio" name = "major" value="응용화학과">응용화학과</li>
+                  <li><input type = "radio" name = "major" value="응용물리학과">응용물리학과</li>
+                  <li><input type = "radio" name = "major" value="응용수학과">응용수학과</li>
+                  <li><input type = "radio" name = "major" value="우주과학과">우주과학과</li>
+                  <li><input type = "radio" name = "major" value="산업경영공학과">산업경영공학과</li>
                 </ul>
                 </div>
             </td>
@@ -72,6 +73,12 @@
             </td>
             <td><input type = "password" class="form-control" name = "password" placeholder="비밀번호"></td>
             <td><input type = "password" class="form-control" name = "password_confirmation" placeholder="비밀번호 확인"></td>
+            <td>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><input type = "radio" name = "feeOfSch" value=true>납부</li>
+                <li><input type = "radio" name = "feeOfSch" value=false>미납</li>
+              </ul>
+            </td>
             <td>
                 <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

@@ -37,23 +37,11 @@ class TempusersController < ApplicationController
     end
 
     def index
-        if user_major?.include?  "응용물리학과"
-        @tempusers = Tempuser.where(major: user_major?)
-      else
-        @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
-        @tmp2 = Tempuser.where(major: user_major?, identity: "2")
-        @tmp3 = Tempuser.where(major: user_major?, identity: "3")
-      end
+      @tempusers = Tempuser.where(major: user_major?)
     end
 
     def indexE
-      if user_major?.include?  "응용물리학과"
-        @tempusers = Tempuser.where(major: user_major?)
-      else
-        @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")
-        @tmp2 = Tempuser.where(major: user_major?, identity: "2")
-        @tmp3 = Tempuser.where(major: user_major?, identity: "3")
-      end
+      @tempusers = Tempuser.where(major: user_major?)
     end
 
 end

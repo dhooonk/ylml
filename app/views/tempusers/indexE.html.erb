@@ -19,69 +19,12 @@
         <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspstuN&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
         <th class="admin_index"><strong>&nbsp&nbsp&nbspidentity&nbsp&nbsp&nbsp</strong></th>
         <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppassword&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
+        <th class="admin_index"><strong>&nbspfeeOfSch&nbsp</strong></th>
       </tr>
     </thead>
     <tbody>
-      <% if !(user_major?.include? "응용물리학과") %>
-        <% @tmp1.each do |a| %>
-          <tr>
-            <td>
-              <%= a.name %>
-            </td>
-            <td>
-              <%= a.major %>
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-          </tr>
-        <% end %>
-        <% @tmp2.each do |a| %>
-          <tr>
-            <td>
-              <%= a.name %>
-            </td>
-            <td>
-              <%= a.major %>
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-          </tr>
-        <% end %>
-        <% @tmp3.each do |a| %>
-          <tr>
-            <td>
-              <%= a.name %>
-            </td>
-            <td>
-              <%= a.major %>
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-            <td>
-              1
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-          </tr>
-        <% end %>
-      <% else %>
-        <% @tempusers.each do |i| %>
+      <% @tempusers.each do |i| %>
+        <% if User.find_by(stuN: i.stuN).nil? %>
           <tr>
             <td>
               <%= i.name %>
@@ -105,6 +48,13 @@
             </td>
             <td>
               <%= i.stuN %>
+            </td>
+            <td>
+              <% if i.feeOfSch == true %>
+                true
+              <% else %>
+                false
+              <% end %>
             </td>
           </tr>
         <% end %>

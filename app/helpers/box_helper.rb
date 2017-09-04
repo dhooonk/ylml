@@ -108,9 +108,9 @@ module BoxHelper
   def is_feeOfSch_true?
     if !(user_major?.include? "응용물리학과")
       if current_user.identity == "1"
-        if current_user.feeOfSch == false
+        if current_user.feeOfSch != true
           redirect_to new_post_path, method: "get"
-          flash[:alert] = "학생회비 미납부로 인한 사용제한"
+          flash[:alert] = "학생회비 미납으로 인하여 사물함을 신청하실 수 없습니다."
         end
       end
     end
