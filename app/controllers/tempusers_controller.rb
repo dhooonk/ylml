@@ -14,9 +14,9 @@ class TempusersController < ApplicationController
       # @tempuser.identity = params[:identity]
       # @tempuser.stuN = params[:stuN]
       # @tempuser.save
-
+      @userTemp=Tempuser.find_by(stuN: params[:tempuser][:stuN])
       @user=User.find_by(stuN: params[:tempuser][:stuN])
-      if @user.nil? && (params[:tempuser][:stuN].length == 10)
+      if @user.nil? && @userTemp.nil? && (params[:tempuser][:stuN].length == 10)
         Tempuser.create(name: params[:tempuser][:name],
                       major: params[:tempuser][:major],
                       identity: params[:tempuser][:identity],
@@ -27,6 +27,9 @@ class TempusersController < ApplicationController
       elsif @user.present?
         flash[:alert] = "이미 존재하는 회원정보입니다."
         render :template => "/tempusers/new", :locals => {:@tempuser => Tempuser.new}
+      elsif @userTemp.present?
+        flash[:alert] = "이미 가입신청을 하셨습니다."
+        render :template => "/tempusers/new", :locals => {:@tempuser => Tempuser.new}
       else
         flash[:alert] = "학번을 다시 입력해주세요."
         render :template => "/tempusers/new", :locals => {:@tempuser => Tempuser.new}
@@ -34,7 +37,7 @@ class TempusersController < ApplicationController
     end
 
     def index
-      if user_major?.include?  "응용물리학과"
+        if user_major?.include?  "응용물리학과"
         @tempusers = Tempuser.where(major: user_major?)
       else
         @tmp1 = Tempuser.where(major: user_major?, feeOfSch: true, identity: "1")

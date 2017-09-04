@@ -24,6 +24,25 @@
     <tbody>
       <% if !(user_major?.include? "응용물리학과") %>
         <% @tmp1.each do |a| %>
+          <% if User.find_by(stuN: a.stuN) %>
+            <tr style="display:none;">
+              <td>
+                <%= a.id %>
+              </td>
+              <td>
+                <%= a.name %>
+              </td>
+              <td>
+                <%= a.major %>
+              </td>
+              <td>
+                <%= a.stuN %>
+              </td>
+              <td>
+                학부생
+              </td>
+            </tr>
+          <% else %>
           <tr>
             <td>
               <%= a.id %>
@@ -34,13 +53,14 @@
             <td>
               <%= a.major %>
             </td>
-              <td>
-                <%= a.stuN %>
-              </td>
+            <td>
+              <%= a.stuN %>
+            </td>
             <td>
               학부생
             </td>
           </tr>
+          <% end %>
         <% end %>
         <% @tmp2.each do |a| %>
           <tr>
