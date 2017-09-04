@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     delete "/box/destroy_ime/:id" =>"box#destroy_ime"
     resources :admin, only: [:index, :destroy, :edit]
     delete "/destroy_all/:id" => "admin#destroy_all"
+    post "/admin/:id" => "admin#feeOfSch"
     resources :choose, only: [:index]
     get '/tempusers/new' => 'tempusers#new'
     post '/tempusers/create' => 'tempusers#create'

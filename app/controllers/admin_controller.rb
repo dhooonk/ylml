@@ -55,6 +55,19 @@ class AdminController < ApplicationController
     end
   end
 
+  def feeOfSch
+    user = User.find(params[:id])
+    if user.feeOfSch == true
+      user.feeOfSch = "false"
+      user.save
+    else
+      user.feeOfSch = "true"
+      user.save
+    end
+
+    redirect_to admin_index_path, method:"get"
+  end
+
   def destroy ##특정 1명의 개인의 계정을 삭제하는 액션
     user = User.find(params[:id])
     if (user.identity != "admin")

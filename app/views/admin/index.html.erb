@@ -73,9 +73,9 @@
                       </td>
                         <td>
                           <% if u_i.feeOfSch == true %>
-                          납부
+                          납부<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post" %>
                           <% else %>
-                          미납
+                          미납<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post" %>
                           <% end %>
                         </td>
 
