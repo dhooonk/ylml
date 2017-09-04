@@ -180,7 +180,12 @@ class BoxController < ApplicationController
   private
   def authenticate_admin_chem!
     if (current_user.identity != "admin") && (current_user.identity != "3")
-      if (current_time1 > Time.now) || (Time.now > final_time1)
+      if !(current_time1 == final_time1)
+        if (current_time1 > Time.now) || (Time.now > final_time1)
+          redirect_to choose_index_path
+          flash[:alert] = "신청기간이 아닙니다."
+        end
+      else
         redirect_to choose_index_path
         flash[:alert] = "신청기간이 아닙니다."
       end
@@ -189,7 +194,12 @@ class BoxController < ApplicationController
 
   def authenticate_admin_aplsci!
     if (current_user.identity != "admin") && (current_user.identity != "3")
-      if (current_time2 > Time.now) || (Time.now > final_time2)
+      if !(current_time2 == final_time2)
+        if (current_time2 > Time.now) || (Time.now > final_time2)
+          redirect_to choose_index_path
+          flash[:alert] = "신청기간이 아닙니다."
+        end
+      else
         redirect_to choose_index_path
         flash[:alert] = "신청기간이 아닙니다."
       end
@@ -198,7 +208,12 @@ class BoxController < ApplicationController
 
   def authenticate_admin_ime!
     if (current_user.identity != "admin") && (current_user.identity != "3")
-      if (current_time3 > Time.now) || (Time.now > final_time3)
+      if !(current_time3 == final_time3)
+        if (current_time3 > Time.now) || (Time.now > final_time3)
+          redirect_to choose_index_path
+          flash[:alert] = "신청기간이 아닙니다."
+        end
+      else
         redirect_to choose_index_path
         flash[:alert] = "신청기간이 아닙니다."
       end
