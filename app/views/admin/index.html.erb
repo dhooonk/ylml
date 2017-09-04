@@ -71,7 +71,11 @@
                         <%= u_i.stuN %>
                       </td>
                         <td>
-                          <%= u_i.feeOfSch %>
+                          <% if u_i.feeOfSch == true %>
+                          납부
+                          <% else %>
+                          미납
+                          <% end %>
                         </td>
 
                     <% if current_user.major == "응용화학과" %>
