@@ -7,7 +7,7 @@ class CsvController < ApplicationController
   end
 
   def create
-    user = User.new(name: params[:name], stuN: params[:stuN], email: params[:email], major: params[:major], password: params[:password], identity: params[:identity])
+    user = User.new(name: params[:name], stuN: params[:stuN], email: params[:email], feeOfSch: params[:feeOfSch], major: params[:major], password: params[:password], identity: params[:identity])
 
 
     if User.find_by(stuN: params[:stuN]).present?

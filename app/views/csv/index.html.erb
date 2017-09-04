@@ -27,13 +27,14 @@
     <%= form_tag csv_index_path do %>
     <h2>직접등록</h2>
     <hr>
-      <div class="table-responsive">
+      <div class="table-responsive" style="min-height:300px;">
         <table class="table table-condensed">
           <thead>
             <tr>
               <th><strong>이름</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>학과</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>학번</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+              <th><strong>학생회비</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>비밀번호</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>비밀번호 확인</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
               <th><strong>권한부여</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
@@ -57,6 +58,18 @@
                 </div>
             </td>
             <td><input type = "text" class="form-control" name = "stuN" placeholder="학번"></td>
+            <td>
+                <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                학생회비
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><input type = "radio" name = "feeOfSch" value="true">납부</li>
+                <li><input type = "radio" name = "feeOfSch" value="false">미납</li>
+                </ul>
+                </div>
+            </td>
             <td><input type = "password" class="form-control" name = "password" placeholder="비밀번호"></td>
             <td><input type = "password" class="form-control" name = "password_confirmation" placeholder="비밀번호 확인"></td>
             <td>

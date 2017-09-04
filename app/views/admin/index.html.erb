@@ -40,6 +40,7 @@
                   <th class="admin_index"><strong>이름</strong></th>
                   <th class="admin_index"><strong>학과</strong></th>
                   <th class="admin_index"><strong>학번</strong></th>
+                  <th class="admin_index"><strong>학생회비</strong></th>
                   <th class="admin_index"><strong>신청 사물함(학과)</strong></th>
                   <th class="admin_index"><strong>신청 사물함(단과대)</strong></th>
                   <th class="admin_index"><strong>비밀번호 변경</strong></th>
@@ -69,7 +70,9 @@
                       <td>
                         <%= u_i.stuN %>
                       </td>
-
+                        <td>
+                          <%= u_i.feeOfSch %>
+                        </td>
 
                     <% if current_user.major == "응용화학과" %>
                       <% if u_i.cabinet == nil%>
