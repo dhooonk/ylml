@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831050755) do
+ActiveRecord::Schema.define(version: 20170904111718) do
 
   create_table "cabinet_apli_scis", force: :cascade do |t|
     t.integer "user_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170831050755) do
     t.string "major"
     t.string "stuN"
     t.boolean "applied_sci_admin", default: false
+    t.boolean "feeOfSch"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["stuN"], name: "index_users_on_stuN", unique: true
   end

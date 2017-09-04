@@ -18,10 +18,10 @@ class LimitsController < ApplicationController
     @limit = Limit.find(params[:id])
 
     if params[:student_time].nil?
-      @limit.student_time = (Time.now + 000101010110)
+      @limit.student_time = (Time.now + 100000000)
     else
       if params[:student_time].length != 16
-        @limit.student_time = (Time.now + 000101010110)
+        @limit.student_time = (Time.now + 100000000)
       else
         limit = params[:student_time]
         @limit.student_time = "#{limit} +0900"
@@ -29,10 +29,10 @@ class LimitsController < ApplicationController
     end
 
     if params[:student_time_].nil?
-      @limit.student_time_ = (Time.now + 000101010110)
+      @limit.student_time_ = (Time.now + 110000000)
     else
       if params[:student_time_].length != 16
-        @limit.student_time_ = (Time.now + 000101010110)
+        @limit.student_time_ = (Time.now + 110000000)
       else
         limit = params[:student_time_]
         @limit.student_time_ = "#{limit} +0900"
@@ -40,10 +40,10 @@ class LimitsController < ApplicationController
     end
 
     if params[:gda_time].nil?
-      @limit.gda_time = (Time.now + 000101010110)
+      @limit.gda_time = (Time.now + 100000000)
     else
       if params[:gda_time].length != 16
-        @limit.gda_time = (Time.now + 000101010110)
+        @limit.gda_time = (Time.now + 100000000)
       else
         limit = params[:gda_time]
         @limit.gda_time = "#{limit} +0900"
@@ -51,10 +51,10 @@ class LimitsController < ApplicationController
     end
 
     if params[:gda_time_].nil?
-      @limit.gda_time_ = (Time.now + 000101010110)
+      @limit.gda_time_ = (Time.now + 110000000)
     else
       if params[:gda_time_].length != 16
-        @limit.gda_time_ = (Time.now + 000101010110)
+        @limit.gda_time_ = (Time.now + 110000000)
       else
         limit = params[:gda_time_]
         @limit.gda_time_ = "#{limit} +0900"

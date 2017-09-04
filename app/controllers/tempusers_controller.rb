@@ -16,7 +16,7 @@ class TempusersController < ApplicationController
       # @tempuser.save
 
       @user=User.find_by(stuN: params[:tempuser][:stuN])
-      if @user.nil? && (params[:tempuser][:stuN].length == 10)
+      if @user.nil? && (params[:tempuser][:stuN].length == 10.to_i)
         Tempuser.create(name: params[:tempuser][:name],
                       major: params[:tempuser][:major],
                       identity: params[:tempuser][:identity],
