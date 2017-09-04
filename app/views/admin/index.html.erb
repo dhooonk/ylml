@@ -43,7 +43,6 @@
                   <th class="admin_index"><strong>학생회비</strong></th>
                   <th class="admin_index"><strong>신청 사물함(학과)</strong></th>
                   <th class="admin_index"><strong>신청 사물함(단과대)</strong></th>
-                  <th class="admin_index"><strong>납부여부</strong></th>
                   <th class="admin_index"><strong>비밀번호 변경</strong></th>
                   <th class="admin_index"><strong>계정삭제</strong></th>
                 </tr>
@@ -103,13 +102,6 @@
                         <td><%= u_i.cabinetApliSci.cabins_aplsci %></td>
                       <% end %>
                     <% end %>
-                    <td>
-                      <% if u_i.feeOfSch == true %>
-                        납부
-                      <% else %>
-                        미납
-                      <% end %>
-                    </td>
 
                     <td>
                         <%= link_to "[변경]",edit_admin_path(u_i.id), method:"get", data: {confirm: "비밀번호가 '123456'으로 변경됩니다. 정말 변경하시겠습니까?"} %>
