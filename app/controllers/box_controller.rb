@@ -8,7 +8,7 @@ class BoxController < ApplicationController
   before_action :authenticate_admin_ime!, only: [:ime, :destroy_ime]
   before_action :authenticate_admin_chem!, only: [:index, :destroy_apli_chem]
   before_action :authenticate_admin_aplsci!, only: [:applsci, :destroy_apli_sci]
-  before_action :is_feeOfSch_true?
+  before_action :is_feeOfSch_true?, except: [:applsci, :create, :destroy_apli_sci]
   before_action :user_apply?, only: [:applsci, :ime, :create]
   before_action :user_apply_chem1?, only: [:index]
   before_action :user_apply_chem2?, only: [:applsci]

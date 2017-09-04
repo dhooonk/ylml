@@ -19,89 +19,12 @@
         <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp학과&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
         <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
         <th class="admin_index"><strong>&nbsp&nbsp&nbsp권한&nbsp&nbsp&nbsp</strong></th>
+        <th class="admin_index"><strong>&nbsp납부여부&nbsp</strong></th>
       </tr>
     </thead>
     <tbody>
-      <% if !(user_major?.include? "응용물리학과") %>
-        <% @tmp1.each do |a| %>
-          <% if User.find_by(stuN: a.stuN) %>
-            <tr style="display:none;">
-              <td>
-                <%= a.id %>
-              </td>
-              <td>
-                <%= a.name %>
-              </td>
-              <td>
-                <%= a.major %>
-              </td>
-              <td>
-                <%= a.stuN %>
-              </td>
-              <td>
-                학부생
-              </td>
-            </tr>
-          <% else %>
-          <tr>
-            <td>
-              <%= a.id %>
-            </td>
-            <td>
-              <%= a.name %>
-            </td>
-            <td>
-              <%= a.major %>
-            </td>
-            <td>
-              <%= a.stuN %>
-            </td>
-            <td>
-              학부생
-            </td>
-          </tr>
-          <% end %>
-        <% end %>
-        <% @tmp2.each do |a| %>
-          <tr>
-            <td>
-              <%= a.id %>
-            </td>
-            <td>
-              <%= a.name %>
-            </td>
-            <td>
-              <%= a.major %>
-            </td>
-              <td>
-                <%= a.stuN %>
-              </td>
-            <td>
-              대학원생
-            </td>
-          </tr>
-        <% end %>
-        <% @tmp3.each do |a| %>
-          <tr>
-            <td>
-              <%= a.id %>
-            </td>
-            <td>
-              <%= a.name %>
-            </td>
-            <td>
-              <%= a.major %>
-            </td>
-              <td>
-                <%= a.stuN %>
-              </td>
-            <td>
-              교수
-            </td>
-          </tr>
-        <% end %>
-      <% else %>
-        <% @tempusers.each do |i| %>
+      <% @tempusers.each do |i| %>
+        <% if User.find_by(stuN: i.stuN).nil? %>
           <tr>
             <td>
               <%= i.id %>
@@ -124,6 +47,13 @@
                 교수
               <% else %>
                 관리자
+              <% end %>
+            </td>
+            <td>
+              <% if i.feeOfSch == true %>
+                납부
+              <% else %>
+                미납
               <% end %>
             </td>
           </tr>
