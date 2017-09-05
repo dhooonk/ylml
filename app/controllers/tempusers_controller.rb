@@ -38,10 +38,20 @@ class TempusersController < ApplicationController
 
     def index
       @tempusers = Tempuser.where(major: user_major?)
+      @tempusers.each do |i|
+        while Tempuser.where(stuN: i.stuN, name: i.name).count > 1
+          Tempuser.find_by(stuN: i.stuN, name: i.name).destroy
+        end
+      end
     end
 
     def indexE
       @tempusers = Tempuser.where(major: user_major?)
+      @tempusers.each do |i|
+        while Tempuser.where(stuN: i.stuN, name: i.name).count > 1
+          Tempuser.find_by(stuN: i.stuN, name: i.name).destroy
+        end
+      end
     end
 
 end
