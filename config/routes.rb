@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get "/posts/privacy" =>"posts#privacy"
     get "/posts/partner" =>"posts#partner"
     resources :posts, only: [:index, :new]
-    resources :box, only: [:index, :create, :destroy]
+    resources :box, only: [:index, :create]
     get "/box/index" =>"box#index"
     get "/box/applsci" =>"box#applsci"
     get "/box/ime" =>"box#ime"

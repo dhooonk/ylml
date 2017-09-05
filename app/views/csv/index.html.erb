@@ -20,7 +20,7 @@
         파일선택
         <%= file_field_tag :file %>
       </span>
-       <%= submit_tag "등록", :class => "btn btn-default" %>
+       <%= submit_tag "등록", :class => "btn btn-default", data: {confirm: "해당 파일로 등록하시겠습니까?"} %>
     <% end %>
     <br>
     <br>
@@ -89,6 +89,6 @@
           </tbody>
         </table>
       </div>
-      <input class="btn btn-default" type="submit" value="완료">
+      <input class="btn btn-default" type="submit" value="완료" onclick="return confirm('입력하신 정보를 등록하시겠습니까?')">
     <% end %>
   </div>

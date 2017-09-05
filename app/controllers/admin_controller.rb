@@ -71,6 +71,8 @@ class AdminController < ApplicationController
   def destroy ##특정 1명의 개인의 계정을 삭제하는 액션
     user = User.find(params[:id])
     if (user.identity != "admin")
+      tempusers = Tempuser.where(stuN: user.stuN)
+      tempusers.destroy_all
       user.destroy
     else
       flash[:warning] = "관리자 계정은 삭제할 수 없습니다."
@@ -83,19 +85,28 @@ class AdminController < ApplicationController
     if !((current_user.major == "산업경영공학과") || (current_user.major == "응용화학과"))
       users = User.where(major: user_major?)
       users2 = User.where(major: "응용화학과")
-      users.where(identity: "1").destroy_all
-      users.where(identity: "2").destroy_all
-      users.where(identity: "3").destroy_all
-      users2.where(identity: "1").destroy_all
-      users2.where(identity: "2").destroy_all
-      users2.where(identity: "3").destroy_all
+      uStuN = []
+      uStuN2 = []
+      users.each do |u|
+        uStuN << u.stuN
+      end
+      users2.each do |u|
+        uStuN2 << u.stuN
+      end
+      Tempuser.where(stuN: uStuN).destroy_all
+      Tempuser.where(stuN: uStuN2).destroy_all
+      users.where.not(identity: "admin").destroy_all
+      users2.where.not(identity: "admin").destroy_all
       flash[:warning] = "전체 계정 정보가 삭제 되었습니다."
       redirect_to admin_index_path
     else
       users = User.where(major: user_major?)
-      users.where(identity: "1").destroy_all
-      users.where(identity: "2").destroy_all
-      users.where(identity: "3").destroy_all
+      uStuN = []
+      users.each do |u|
+        uStuN << u.stuN
+      end
+      Tempuser.where(stuN: uStuN).destroy_all
+      users.where.not(identity: "admin").destroy_all
       flash[:warning] = "전체 계정 정보가 삭제 되었습니다."
       redirect_to admin_index_path
     end

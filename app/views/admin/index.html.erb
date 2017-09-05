@@ -45,7 +45,6 @@
                   <th class="admin_index"><strong>신청 사물함(학과)</strong></th>
                   <th class="admin_index"><strong>신청 사물함(단과대)</strong></th>
                   <th class="admin_index"><strong>비밀번호 변경</strong></th>
-                  <th class="admin_index"><strong>계정삭제</strong></th>
                 </tr>
               </thead>
               <tbody>
@@ -64,6 +63,11 @@
                     </td>
                     <td>
                       <%= u_i.name %>
+                      <% if !!(u_i.identity == "admin") %>
+                        <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "관리자 계정을 제외한 모든 계정이 삭제됩니다. 정말 삭제하시겠습니까? (삭제된 계정은 복구할 수 없습니다.)"} %>
+                      <% else %>
+                        <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "선택된 계정이 삭제됩니다. 정말 삭제하시겠습니까? (삭제된 계정은 복구할 수 없습니다.)"} %>
+                      <% end %>
                     </td>
                     <td>
                       <%= u_i.major %>
@@ -73,9 +77,9 @@
                       </td>
                         <td>
                           <% if u_i.feeOfSch == true %>
-                          납부<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post" %>
+                          납부<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post", data: {confirm: "'미납'으로 변경하시겠습니까?(#{u_i.name})"} %>
                           <% else %>
-                          미납<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post" %>
+                          미납<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post", data: {confirm: "'납부'로 변경하시겠습니까?(#{u_i.name})"}  %>
                           <% end %>
                         </td>
 
@@ -93,30 +97,23 @@
                     <% elsif current_user.major == "산업경영공학과"%>
                       <% if u_i.cabinetIme == nil%>
                         <td>미신청</td>
-                        <td>신청불가</td>
+                        <td>-</td>
                       <% else %>
                         <td><%= u_i.cabinetIme.cabins_ime %></td>
-                        <td>신청불가</td>
+                        <td>-</td>
                       <% end %>
                     <% else %>
                       <% if u_i.cabinetApliSci == nil%>
-                        <td>신청불가</td>
+                        <td>-</td>
                         <td>미신청</td>
                       <% else %>
-                        <td>신청불가</td>
+                        <td>-</td>
                         <td><%= u_i.cabinetApliSci.cabins_aplsci %></td>
                       <% end %>
                     <% end %>
 
                     <td>
                         <%= link_to "[변경]",edit_admin_path(u_i.id), method:"get", data: {confirm: "비밀번호가 '123456'으로 변경됩니다. 정말 변경하시겠습니까?"} %>
-                    </td>
-                    <td>
-                      <% if !!(u_i.identity == "admin") %>
-                        <%= link_to "[전체삭제]", "/destroy_all/:u_i.id", method:"delete", data: {confirm: "관리자 계정을 제외한 모든 계정이 삭제됩니다. 정말 삭제하시겠습니까? (삭제된 계정은 복구할 수 없습니다.)"} %>
-                      <% else %>
-                        <%= link_to "[삭제]", admin_path(u_i.id), method: "delete", data: {confirm: "선택된 계정이 삭제됩니다. 정말 삭제하시겠습니까? (삭제된 계정은 복구할 수 없습니다.)"} %>
-                      <% end %>
                     </td>
                   </tr>
                 <% end %>
