@@ -77,9 +77,9 @@
                       </td>
                         <td>
                           <% if u_i.feeOfSch == true %>
-                          납부<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post", data: {confirm: "'미납'으로 변경하시겠습니까?(#{u_i.name})"} %>
+                          납부<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post", data: {confirm: "(#{u_i.stuN})계정의 학생회비를 '미납'으로 변경하시겠습니까?"} %>
                           <% else %>
-                          미납<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post", data: {confirm: "'납부'로 변경하시겠습니까?(#{u_i.name})"}  %>
+                          미납<%= link_to "[변경]", "/admin/#{u_i.id}", method: "post", data: {confirm: "(#{u_i.stuN})계정의 학생회비를 '납부'로 변경하시겠습니까?"}  %>
                           <% end %>
                         </td>
 
