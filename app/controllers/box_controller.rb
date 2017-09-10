@@ -127,21 +127,30 @@ class BoxController < ApplicationController
     number_9 = (103..108)
     number_10 = (115..120)
     @number_halfto120 = [number_6, number_7, number_8, number_9, number_10]
-
   end
 
   def create
     if current_user.major == "응용화학과"
-      if params[:major] == "응용화학과"
-        if Cabinet.find_by(cabin:params[:seatNumber])
-          redirect_to box_index_path, method:"get"
-          flash[:alert] = "이미 신청완료 된 사물함입니다."
-        else
-          Cabinet.create(cabin: params[:seatNumber], major: current_user.major, user_id: current_user.id)
-          redirect_to new_post_path, method: "get"
-          flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+        if params[:major] == "응용화학과"
+          if Cabinet.find_by(cabin:params[:seatNumber])
+            redirect_to box_index_path, method:"get"
+            flash[:alert] = "이미 신청완료 된 사물함입니다."
+          else
+            Cabinet.create(cabin: params[:seatNumber], major: current_user.major, user_id: current_user.id)
+            redirect_to new_post_path, method: "get"
+            flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+          end
+        elsif params[:major] == "응용과학대학"
+          if CabinetApliSci.find_by(cabins_aplsci: params[:seatNumber])
+            redirect_to box_applsci_path, method:"get"
+            flash[:alert] = "이미 신청완료 된 사물함입니다."
+          else
+            CabinetApliSci.create(cabins_aplsci: params[:seatNumber], user_id: current_user.id)
+            redirect_to new_post_path, method: "get"
+            flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+          end
         end
-      elsif params[:major] == "응용과학대학"
+    elsif (current_user.major == "응용물리학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
         if CabinetApliSci.find_by(cabins_aplsci: params[:seatNumber])
           redirect_to box_applsci_path, method:"get"
           flash[:alert] = "이미 신청완료 된 사물함입니다."
@@ -150,34 +159,24 @@ class BoxController < ApplicationController
           redirect_to new_post_path, method: "get"
           flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
         end
-      end
-    elsif (current_user.major == "응용물리학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
-      if CabinetApliSci.find_by(cabins_aplsci: params[:seatNumber])
-        redirect_to box_applsci_path, method:"get"
-        flash[:alert] = "이미 신청완료 된 사물함입니다."
-      else
-        CabinetApliSci.create(cabins_aplsci: params[:seatNumber], user_id: current_user.id)
-        redirect_to new_post_path, method: "get"
-        flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
-      end
     elsif current_user.major == "산업경영공학과"
-      if CabinetIme.find_by(cabins_ime: params[:seatNumber])
-        redirect_to box_ime_path, method:"get"
-        flash[:alert] = "이미 신청완료 된 사물함입니다."
-      else
-        CabinetIme.create(cabins_ime: params[:seatNumber], user_id: current_user.id)
-        redirect_to new_post_path, method: "get"
-        flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
-      end
-    elsif current_user.major == (current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과")|| (current_user.major == "소프트웨어융합학과")
-      if CabinetIme.find_by(cabins_ime: params[:seatNumber])
-        redirect_to box_ime_path, method:"get"
-        flash[:alert] = "이미 신청완료 된 사물함입니다."
-      else
-        CabinetIme.create(cabins_ime: params[:seatNumber], user_id: current_user.id)
-        redirect_to new_post_path, method: "get"
-        flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
-      end
+        if CabinetIme.find_by(cabins_ime: params[:seatNumber])
+          redirect_to box_ime_path, method:"get"
+          flash[:alert] = "이미 신청완료 된 사물함입니다."
+        else
+          CabinetIme.create(cabins_ime: params[:seatNumber], user_id: current_user.id)
+          redirect_to new_post_path, method: "get"
+          flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+        end
+    elsif (current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과") || (current_user.major == "소프트웨어융합학과")
+        if CabinetEni.find_by(cabins_eni: params[:seatNumber])
+          redirect_to box_ime_path, method:"get"
+          flash[:alert] = "이미 신청완료 된 사물함입니다."
+        else
+          CabinetEni.create(cabins_eni: params[:seatNumber], user_id: current_user.id)
+          redirect_to new_post_path, method: "get"
+          flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+        end
     end
   end
 

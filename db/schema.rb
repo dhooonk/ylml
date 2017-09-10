@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904111718) do
+ActiveRecord::Schema.define(version: 20170910142722) do
 
   create_table "cabinet_apli_scis", force: :cascade do |t|
     t.integer "user_id"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20170904111718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cabinet_apli_scis_on_user_id"
+  end
+
+  create_table "cabinet_enis", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "cabins_eni"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cabinet_enis_on_user_id"
   end
 
   create_table "cabinet_imes", force: :cascade do |t|
@@ -32,7 +40,6 @@ ActiveRecord::Schema.define(version: 20170904111718) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cabins"
     t.string "major"
     t.string "cabin"
     t.index ["user_id"], name: "index_cabinets_on_user_id"
@@ -71,7 +78,6 @@ ActiveRecord::Schema.define(version: 20170904111718) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "seatNumber"
     t.string "identity", default: "1"
     t.string "major"
     t.string "stuN"

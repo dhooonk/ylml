@@ -102,6 +102,14 @@
                         <td><%= u_i.cabinetIme.cabins_ime %></td>
                         <td>-</td>
                       <% end %>
+                      <% elsif ((current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과")|| (current_user.major == "소프트웨어융합학과"))%>
+                        <% if u_i.cabinetEni == nil%>
+                          <td>-</td>
+                          <td>미신청</td>
+                        <% else %>
+                          <td>-</td>
+                          <td><%= u_i.cabinetEni.cabins_eni %></td>
+                        <% end %>
                     <% else %>
                       <% if u_i.cabinetApliSci == nil%>
                         <td>-</td>
