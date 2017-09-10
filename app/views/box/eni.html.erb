@@ -1,0 +1,64 @@
+<h2  class = "h2"><h1 class="page-header container">
+  사물함 신청 <small>Locker Application</small>
+</h1>
+<ol class="breadcrumb container">
+  <li class="active">
+    <strong>공지사항</strong><br>
+    사용기간 종료 후에는 연장 신청된 사물함을 제외한 모든 사물함이 자동 반납처리되며, 사용기간 이후 사물함 내외의 개인물품은 강제 폐기되오니 기간 유의해주시길 바랍니다.<br><br>
+    <strong>사물함 이용문의</strong><br>
+    전자정보대학 학생회장 <br><br>
+
+    <strong>사물함 사용 여부</strong> <br>
+    <input class = "btn btn-default btn-lg " type = "button" value = "신청가능">
+    <input class = "btn btn-default btn-lg " type = "button" value = "신청불가" style="background-color: gray;">
+  </li>
+</ol>
+<div class = "container"><!-- 닫는 코드 맨 아래에 위치-->
+  <div class="row"><!-- 닫는 코드 맨 아래에 위치-->
+    <div class = "col-xs-12" style="text-align:center;">
+      <h2>전자정보대학/응용과학대학 1층</h2>
+    </div>
+    <div class = "col-xs-12 col-sm-6">
+      <h3 style="text-align:center"> 왼쪽</h3>
+      <table class="table">
+        <% @number_61tohalf.each do |num| %>
+          <tr>
+            <% num.each do |n| %>
+              <td>
+                <%= form_tag box_index_path, method: "post", id:"box" do %>
+                  <% if !!CabinetEni.find_by(cabins_eni:"#{n}") %>
+                    <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
+                  <% else %>
+                    <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
+                    <input type = "hidden" name = "major" value = "응용과학대학"/>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class = "col-xs-12 col-sm-6">
+      <h3 style="text-align:center"> 오른쪽</h3>
+      <table class="table">
+        <% @number_halfto120.each do |num| %>
+          <tr>
+            <% num.each do |n| %>
+              <td>
+                <%= form_tag box_index_path, method: "post", id:"box" do %>
+                  <% if !!CabinetEni.find_by(cabins_eni:"#{n}") %>
+                    <input id = "selected" class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>">
+                  <% else %>
+                    <input class = "btn btn-default" type = "submit" name = "seatNumber" value = "<%= n %>" data-confirm="<%= n %>번 사물함을 신청하시겠습니까?">
+                    <input type = "hidden" name = "major" value = "응용과학대학"/>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div><!--row닫힘태그-->
+</div><!--container닫힘태그 -->

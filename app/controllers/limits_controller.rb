@@ -11,6 +11,9 @@ class LimitsController < ApplicationController
     elsif current_user.major == "산업경영공학과"
       @limit = Limit.find(3)
       @limit_id = 3
+    elsif (current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과")|| (current_user.major == "소프트웨어융합학과")
+      @limit = Limit.find(4)
+      @limit_id = 4
     end
   end
 

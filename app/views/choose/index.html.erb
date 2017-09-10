@@ -149,5 +149,54 @@
                 </a>
             </div>
         </div>
+        <div class="col-lg-6 col-md-6">
+          <a href="/box/eni" style="color:black;">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-tasks fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                          <h4><div class="huge">경희대학교 전자정보대학</div></h4>
+                          <div>경희대학교 전자정보대학/응용과학대학 1층</div>
+                          <% if current_user.identity != "3" %>
+                            <% if @time_4.student_time > Time.now %>
+                              <span class="label label-warning">학부생 접수전</span>
+                            <% elsif @time_4.student_time <= Time.now && @time_4.student_time_ >= Time.now %>
+                              <span class="label label-success">학부생 접수중</span>
+                            <% elsif @time_4.student_time == @time_4.student_time_ %>
+                              <span class="label label-default">학부생 설정 전</span>
+                            <% else %>
+                              <span class="label label-danger">학부생 접수완료</span>
+                            <% end %>
+                          <% end %>
+                          <% if current_user.identity != "3" %>
+                            <% if @time_4.gda_time > Time.now %>
+                              <span class="label label-warning">대학원생 접수전</span>
+                            <% elsif @time_4.gda_time <= Time.now && @time_4.gda_time_ >= Time.now %>
+                              <span class="label label-success">대학원생 접수중</span>
+                            <% elsif @time_4.gda_time == @time_4.gda_time_ %>
+                              <span class="label label-default">대학원생 설정 전</span>
+                            <% else %>
+                              <span class="label label-danger">대학원생 접수완료</span>
+                            <% end %>
+                          <% end %>
+                        </div>
+                    </div>
+                </div>
+                    <div class="panel-footer">
+                        <% if current_user.identity != "3" %>
+                          <span class="pull-left"><small>학부생 신청기간: <%= @time_4.student_time.chomp("+0000")%>~<%= @time_4.student_time_.chomp("+0000")%></small></span>
+                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_4.gda_time.chomp("+0000")%>~<%= @time_4.gda_time_.chomp("+0000")%></small></span>
+                        <% else %>
+                          <span class="pull-left">신청하기</span>
+                        <% end %>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
 			</div>
     </div>

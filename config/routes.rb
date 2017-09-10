@@ -13,9 +13,11 @@ Rails.application.routes.draw do
     get "/box/index" =>"box#index"
     get "/box/applsci" =>"box#applsci"
     get "/box/ime" =>"box#ime"
+    get "/box/eni" =>"box#eni"
     delete "/box/destroy_apli_chem/:id" => "box#destroy_apli_chem"
     delete "/box/destroy_apli_sci/:id" =>"box#destroy_apli_sci"
     delete "/box/destroy_ime/:id" =>"box#destroy_ime"
+    delete "/box/destroy_eni/:id" =>"box#destroy_eni"
     resources :admin, only: [:index, :destroy, :edit]
     delete "/destroy_all/:id" => "admin#destroy_all"
     post "/admin/:id" => "admin#feeOfSch"

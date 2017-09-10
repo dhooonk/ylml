@@ -5,11 +5,13 @@ class BoxController < ApplicationController
   before_action :applchem_not?, only: [:index, :destroy_apli_chem]
   before_action :applsci_not?, only: [:applsci, :destroy_apli_sci]
   before_action :ime_not?, only: [:ime, :destroy_ime]
-  before_action :authenticate_admin_ime!, only: [:ime, :destroy_ime]
+  before_action :eni_not?, only: [:eni, :destroy_eni]
   before_action :authenticate_admin_chem!, only: [:index, :destroy_apli_chem]
   before_action :authenticate_admin_aplsci!, only: [:applsci, :destroy_apli_sci]
+  before_action :authenticate_admin_ime!, only: [:ime, :destroy_ime]
+  before_action :authenticate_admin_eni!, only: [:eni, :destroy_eni]
   before_action :is_feeOfSch_true?, except: [:applsci, :create, :destroy_apli_sci]
-  before_action :user_apply?, only: [:applsci, :ime, :create]
+  before_action :user_apply?, only: [:applsci, :ime, :eni, :create]
   before_action :user_apply_chem1?, only: [:index]
   before_action :user_apply_chem2?, only: [:applsci]
 
@@ -51,7 +53,7 @@ class BoxController < ApplicationController
   end
 
   def ime
-    @cabinets = CabinetApliSci.all
+    @cabinets = CabinetIme.all
     # 행           열 #
     number_1 = ["01", "02", "03"]
     number_2 = ["04", "05", "06"]
@@ -110,6 +112,24 @@ class BoxController < ApplicationController
 
   end
 
+  def eni
+    @cabinets = CabinetEni.all
+    # 행           열 #
+    number_1 = (61..66)
+    number_2 = (73..78)
+    number_3 = (85..90)
+    number_4 = (97..102)
+    number_5 = (109..114)
+    @number_61tohalf = [number_1, number_2, number_3, number_4, number_5]
+    number_6 = (67..72)
+    number_7 = (79..84)
+    number_8 = (91..96)
+    number_9 = (103..108)
+    number_10 = (115..120)
+    @number_halfto120 = [number_6, number_7, number_8, number_9, number_10]
+
+  end
+
   def create
     if current_user.major == "응용화학과"
       if params[:major] == "응용화학과"
@@ -140,7 +160,16 @@ class BoxController < ApplicationController
         redirect_to new_post_path, method: "get"
         flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
       end
-    else
+    elsif current_user.major == "산업경영공학과"
+      if CabinetIme.find_by(cabins_ime: params[:seatNumber])
+        redirect_to box_ime_path, method:"get"
+        flash[:alert] = "이미 신청완료 된 사물함입니다."
+      else
+        CabinetIme.create(cabins_ime: params[:seatNumber], user_id: current_user.id)
+        redirect_to new_post_path, method: "get"
+        flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
+      end
+    elsif current_user.major == (current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과")|| (current_user.major == "소프트웨어융합학과")
       if CabinetIme.find_by(cabins_ime: params[:seatNumber])
         redirect_to box_ime_path, method:"get"
         flash[:alert] = "이미 신청완료 된 사물함입니다."
@@ -171,6 +200,14 @@ class BoxController < ApplicationController
 
   def destroy_ime
     cabinet = CabinetIme.find_by(user_id: params[:id])
+    cabinet.destroy
+    redirect_to new_post_path
+
+    flash[:warning] = "사물함이 취소되었습니다."
+  end
+
+  def destroy_eni
+    cabinet = CabinetEni.find_by(user_id: params[:id])
     cabinet.destroy
     redirect_to new_post_path
 
@@ -220,5 +257,18 @@ class BoxController < ApplicationController
     end
   end
 
+  def authenticate_admin_eni!
+    if (current_user.identity != "admin") && (current_user.identity != "3")
+      if !(current_time4 == final_time4)
+        if (current_time4 > Time.now) || (Time.now > final_time4)
+          redirect_to choose_index_path
+          flash[:alert] = "신청기간이 아닙니다."
+        end
+      else
+        redirect_to choose_index_path
+        flash[:alert] = "신청기간이 아닙니다."
+      end
+    end
+  end
   ##
 end

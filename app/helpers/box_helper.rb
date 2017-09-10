@@ -8,6 +8,8 @@ module BoxHelper
         2
       elsif (current_user.major == "산업경영공학과")
         3
+      elsif (current_user.major == "전자공학과" || current_user.major == "컴퓨터공학과" || current_user.major == "생체의공학과"|| current_user.major == "소프트웨어융합학과")
+        4
       else
         false
       end
@@ -62,6 +64,22 @@ module BoxHelper
     end
   end
 
+  def current_time4
+    if (current_user.identity == "1")
+      @current_time = Limit.find(4).student_time
+    elsif (current_user.identity == "2")
+      @current_time = Limit.find(4).gda_time
+    end
+  end
+
+  def final_time4
+    if (current_user.identity == "1")
+      @final_time = Limit.find(4).student_time_
+    elsif (current_user.identity == "2")
+      @final_time = Limit.find(4).gda_time_
+    end
+  end
+
   def ordinary_user_not?
     if (current_user.identity == "admin")
       redirect_to root_path
@@ -99,6 +117,11 @@ module BoxHelper
       end
     elsif current_user.major == "산업경영공학과"
       if current_user.cabinetIme
+        redirect_to new_post_path, method: "get"
+        flash[:alert] = "이미 신청하셨습니다."
+      end
+    elsif (current_user.major == "전자공학과" || current_user.major == "컴퓨터공학과" || current_user.major == "생체의공학과"|| current_user.major == "소프트웨어융합학과")
+      if current_user.cabinetEni
         redirect_to new_post_path, method: "get"
         flash[:alert] = "이미 신청하셨습니다."
       end
