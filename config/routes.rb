@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     post "/admin/:id" => "admin#feeOfSch"
     resources :choose, only: [:index]
     get '/tempusers/new' => 'tempusers#new'
+    get '/tempusers/select' => 'tempusers#select'
+    post '/tempusers/accept' => 'tempusers#accept'
     post '/tempusers/create' => 'tempusers#create'
     get '/tempusers/index' => 'tempusers#index'
     get '/tempusers/indexE' => 'tempusers#indexE'

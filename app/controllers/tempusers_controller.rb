@@ -55,4 +55,38 @@ class TempusersController < ApplicationController
       end
     end
 
+    def select
+      @tempusers = Tempuser.where(major: user_major?)
+      @tempusers.each do |i|
+        while Tempuser.where(stuN: i.stuN, name: i.name).count > 1
+          Tempuser.find_by(stuN: i.stuN, name: i.name).destroy
+        end
+      end
+    end
+
+    def accept
+      user = User.new(name: params[:name],
+                      stuN: params[:stuN],
+                      feeOfSch: params[:feeOfSch],
+                      major: params[:major],
+                      password: params[:stuN],
+                      identity: params[:identity])
+      if User.find_by(stuN: params[:stuN]).present?
+        redirect_to tempusers_select_path, method: "get"
+        flash[:warning] = "이미 등록된 학번입니다."
+      elsif User.find_by(stuN: params[:stuN]).nil?
+        if user_major?.include? params[:major]
+          user.save
+          redirect_to tempusers_select_path, method: "get"
+          flash[:success] = "회원정보가 등록되었습니다."
+        else
+          redirect_to tempusers_select_path, method: "get"
+          flash[:warning] = "권한 내의 학과만 등록이 가능합니다."
+        end
+      else
+        redirect_to tempusers_select_path, method: "get"
+        flash[:warning] = "회원정보 등록이 실패 했습니다."
+      end
+    end
+
 end
