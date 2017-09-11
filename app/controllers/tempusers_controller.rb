@@ -24,7 +24,7 @@ class TempusersController < ApplicationController
                       feeOfSch: params[:tempuser][:feeOfSch])
         redirect_to '/'
         flash[:success] = "#{params[:tempuser][:name]}님의 가입요청이 완료 됐습니다."
-        flash[:alert]   = "#{params[:tempuser][:major]}의 신청기간은 '#{apply_range(params[:tempuser][:major])}'입니다."
+        flash[:info]   = "#{params[:tempuser][:major]}의 사물함 신청기간은 '#{apply_range(params[:tempuser][:major])}'입니다."
       elsif @user.present?
         flash[:alert] = "이미 존재하는 회원정보입니다."
         render :template => "/tempusers/new", :locals => {:@tempuser => Tempuser.new}

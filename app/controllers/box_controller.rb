@@ -115,18 +115,24 @@ class BoxController < ApplicationController
   def eni
     @cabinets = CabinetEni.all
     # 행           열 #
-    number_1 = (61..66)
-    number_2 = (73..78)
-    number_3 = (85..90)
-    number_4 = (97..102)
-    number_5 = (109..114)
-    @number_61tohalf = [number_1, number_2, number_3, number_4, number_5]
-    number_6 = (67..72)
-    number_7 = (79..84)
-    number_8 = (91..96)
-    number_9 = (103..108)
-    number_10 = (115..120)
-    @number_halfto120 = [number_6, number_7, number_8, number_9, number_10]
+    number_1 = (271..275)
+    number_2 = (281..285)
+    number_3 = (291..295)
+    number_4 = (351..355)
+    number_5 = (361..365)
+    number_6 = (371..375)
+    number_7 = (381..385)
+    number_8 = (391..395)
+    @number_271tohalf = [number_1, number_2, number_3, number_4, number_5, number_6, number_7, number_8]
+    number_9 = (276..280)
+    number_10 = (286..290)
+    number_11 = (296..300)
+    number_12 = (356..360)
+    number_13 = (366..370)
+    number_14 = (376..380)
+    number_15 = (386..390)
+    number_16 = (396..400)
+    @number_halfto400 = [number_9, number_10, number_11, number_12, number_13, number_14, number_15, number_16]
   end
 
   def create
