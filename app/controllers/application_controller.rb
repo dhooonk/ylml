@@ -41,12 +41,12 @@ end
 def ime_not?
   if (current_user.major != "산업경영공학과")
     redirect_back(fallback_location: choose_index_path)
-    flash[:alert] = "산업경영공학과 관계자만 접근가능합니다. "
+    flash[:alert] = "산업경영공학과 관계자만 접근가능합니다."
   end
 end
 
 def eni_not?
-  if !(current_user.major == "전자공학과" || current_user.major == "컴퓨터공학과" || current_user.major == "생체의공학과"|| current_user.major == "소프트웨어융합학과")
+  if !(["전자공학과", "컴퓨터공학과", "생체의공학과", "소프트웨어융합학과"].include? current_user.major)
     redirect_back(fallback_location: choose_index_path)
     flash[:alert] = "전자정보대학 관계자만 접근가능합니다. "
   end

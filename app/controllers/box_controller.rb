@@ -150,7 +150,7 @@ class BoxController < ApplicationController
             flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
           end
         end
-    elsif (current_user.major == "응용물리학과") || (current_user.major == "우주과학과") || (current_user.major == "응용수학과")
+    elsif ["응용물리학과", "응용수학과", "우주과학과"].include? current_user.major
         if CabinetApliSci.find_by(cabins_aplsci: params[:seatNumber])
           redirect_to box_applsci_path, method:"get"
           flash[:alert] = "이미 신청완료 된 사물함입니다."
@@ -168,9 +168,9 @@ class BoxController < ApplicationController
           redirect_to new_post_path, method: "get"
           flash[:success] = "#{params[:seatNumber]}번 사물함이 신청되었습니다."
         end
-    elsif (current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과") || (current_user.major == "소프트웨어융합학과")
+    else
         if CabinetEni.find_by(cabins_eni: params[:seatNumber])
-          redirect_to box_ime_path, method:"get"
+          redirect_to box_eni_path, method:"get"
           flash[:alert] = "이미 신청완료 된 사물함입니다."
         else
           CabinetEni.create(cabins_eni: params[:seatNumber], user_id: current_user.id)

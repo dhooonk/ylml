@@ -44,21 +44,26 @@
             <td><input type = "text" class="form-control" name = "name" placeholder="이름"></td>
             <td>
                 <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                학과선택
-                <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><input type = "radio" name = "major" value="응용화학과">응용화학과</li>
-                  <li><input type = "radio" name = "major" value="응용물리학과">응용물리학과</li>
-                  <li><input type = "radio" name = "major" value="응용수학과">응용수학과</li>
-                  <li><input type = "radio" name = "major" value="우주과학과">우주과학과</li>
-                  <li><input type = "radio" name = "major" value="산업경영공학과">산업경영공학과</li>
-                  <li><input type = "radio" name = "major" value="전자공학과">전자공학과</li>
-                  <li><input type = "radio" name = "major" value="컴퓨터공학과">컴퓨터공학과</li>
-                  <li><input type = "radio" name = "major" value="생체의공학과">생체의공학과</li>
-                  <li><input type = "radio" name = "major" value="소프트웨어융합학과">소프트웨어융합학과</li>
-                </ul>
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    학과선택
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <% if ["응용물리학과", "응용수학과", "우주과학과"].include? current_user.major %>
+                      <li><input type = "radio" name = "major" value="응용물리학과">응용물리학과</li>
+                      <li><input type = "radio" name = "major" value="응용수학과">응용수학과</li>
+                      <li><input type = "radio" name = "major" value="우주과학과">우주과학과</li>
+                    <% elsif ["전자공학과", "컴퓨터공학과", "생체의공학과", "소프트웨어융합학과"].include? current_user.major %>
+                      <li><input type = "radio" name = "major" value="전자공학과">전자공학과</li>
+                      <li><input type = "radio" name = "major" value="컴퓨터공학과">컴퓨터공학과</li>
+                      <li><input type = "radio" name = "major" value="생체의공학과">생체의공학과</li>
+                      <li><input type = "radio" name = "major" value="소프트웨어융합학과">소프트웨어융합학과</li>
+                    <% elsif current_user.major == "응용화학과" %>
+                      <li><input type = "radio" name = "major" value="응용화학과">응용화학과</li>
+                    <% else %>
+                      <li><input type = "radio" name = "major" value="산업경영공학과">산업경영공학과</li>
+                    <% end %>
+                  </ul>
                 </div>
             </td>
             <td><input type = "text" class="form-control" name = "stuN" placeholder="학번"></td>

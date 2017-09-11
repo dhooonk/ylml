@@ -62,14 +62,14 @@
                     <th class = "new_html"><%= link_to "신청하기", box_ime_path, method: "get" %></th>
                     <th class = "new_html">신청불가</th>
                   <% end %>
-                  <% elsif (current_user.major == "전자공학과" || current_user.major == "컴퓨터공학과" || current_user.major == "생체의공학과" || current_user.major == "소프트웨어융합학과") %>
-                    <% if current_user.cabinetEni != nil %>
-                      <th class = "new_html">신청불가</th>
-                      <th class = "new_html"><%= current_user.cabinetEni.cabins_eni %>&nbsp<%= link_to "취소", "/box/destroy_eni/#{current_user.id}", method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
-                    <% else %>
-                      <th class = "new_html">신청불가</th>
-                      <th class = "new_html"><%= link_to "신청하기", box_eni_path, method: "get" %></th>
-                    <% end %>
+                <% else %>
+                  <% if current_user.cabinetEni != nil %>
+                    <th class = "new_html">신청불가</th>
+                    <th class = "new_html"><%= current_user.cabinetEni.cabins_eni %>&nbsp<%= link_to "취소", "/box/destroy_eni/#{current_user.id}", method:"delete", data: {confirm: "정말 취소하시겠습니까?"} %></th>
+                  <% else %>
+                    <th class = "new_html">신청불가</th>
+                    <th class = "new_html"><%= link_to "신청하기", box_eni_path, method: "get" %></th>
+                  <% end %>
                 <% end %>
               <% else %>
                 <th class = "new_html">관리자 신청불가</th>

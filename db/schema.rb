@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170910142722) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cabins"
     t.string "major"
     t.string "cabin"
     t.index ["user_id"], name: "index_cabinets_on_user_id"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170910142722) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "seatNumber"
     t.string "identity", default: "1"
     t.string "major"
     t.string "stuN"
