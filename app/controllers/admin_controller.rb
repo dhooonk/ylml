@@ -9,7 +9,7 @@ class AdminController < ApplicationController
         @user_admin = User.where(major: user_major?).order('stuN ASC')
       elsif (current_user.major == "산업경영공학과")
         @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
-      elsif (current_user.major == "전자공학과" || current_user.major == "컴퓨터공학과" || current_user.major == "생체의공학과"|| current_user.major == "소프트웨어융합학과")
+      elsif ["전자공학과","컴퓨터공학과","생체의공학과","소프트웨어융합학과"].include? current_user.major
         @user_admin = User.where(major: user_major?).order('stuN ASC')
       end
     else
