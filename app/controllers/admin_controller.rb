@@ -5,17 +5,23 @@ class AdminController < ApplicationController
   def index
     @head = true
     if params[:order].nil?
-      if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과")
+      if (current_user.major == "응용화학과") || (current_user.major == "산업경영공학과") ## 응용화학과이거나 산업경영공학과일때,(각 과일때,)
         @user_admin = User.where(major: user_major?).order('stuN ASC')
-      elsif (current_user.major == "산업경영공학과")
-        @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
-      elsif ["전자공학과","컴퓨터공학과","생체의공학과","소프트웨어융합학과"].include? current_user.major
+      elsif ["응용수학과", "우주과학과", "응용물리학과"].include? current_user.major #응용과학대일때,
+        tmp_arr = []
+        tmp_arr = user_major?
+        tmp_arr.push('응용화학과')
+        @user_admin = User.where(major: tmp_arr).order('stuN ASC')
+      else #전자정보대학일때,
         @user_admin = User.where(major: user_major?).order('stuN ASC')
       end
     else
       if user_major?.include? "응용물리학과"
         if params[:order]== '사물함 순'
-          @user_admin = User.where.not(major: "산업경영공학과").includes(:cabinetApliSci).order('cabinet_apli_scis.cabins_aplsci ASC')
+          tmp_arr = []
+          tmp_arr = user_major?
+          tmp_arr.push('응용화학과').includes(:)
+          @user_admin = User.where(major: user_major?).includes(:cabinetApliSci).order('cabinet_apli_scis.cabins_aplsci ASC')
         elsif params[:order]== '학번 순'
           @user_admin = User.where.not(major: "산업경영공학과").order('stuN ASC')
         elsif params[:order] == '이름 순'

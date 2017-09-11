@@ -108,7 +108,7 @@ module BoxHelper
       flash[:alert] = "이미 신청하셨습니다."
     end
   end
-                                    #위 상단은 응용화학과
+    #위 상단은 응용화학과
   def user_apply?
     if !((current_user.major == "응용화학과") || (current_user.major == "산업경영공학과") || (current_user.major == "전자공학과") || (current_user.major == "컴퓨터공학과") || (current_user.major == "생체의공학과") || (current_user.major == "소프트웨어융합학과"))
       if current_user.cabinetApliSci #응용과학대학(응용물리학과,응용수학과,우주과학과)
