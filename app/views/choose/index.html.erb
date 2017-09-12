@@ -40,8 +40,8 @@
                 </div>
                 <div class="panel-footer">
                     <% if current_user.identity != "3" %>
-                      <span class="pull-left"><small>학부생 신청기간: <%= @time_1.student_time.chomp("+0000")%>~<%=  @time_1.student_time_.chomp("+0000")%></small></span>
-                      <span class="pull-left"><small>대학원생 신청기간: <%= @time_1.gda_time.chomp("+0000")%>~<%= @time_1.gda_time_.chomp("+0000")%></small></span>
+                      <span class="pull-left"><small>학부생 신청기간: <%= @time_1.student_time.chomp("+0900")%>~<%=  @time_1.student_time_.chomp("+0900")%></small></span>
+                      <span class="pull-left"><small>대학원생 신청기간: <%= @time_1.gda_time.chomp("+0900")%>~<%= @time_1.gda_time_.chomp("+0900")%></small></span>
                     <% else %>
                       <span class="pull-left">신청하기</span>
                     <% end %>
@@ -89,8 +89,8 @@
                 </div>
                     <div class="panel-footer">
                         <% if current_user.identity != "3" %>
-                          <span class="pull-left"><small>학부생 신청기간: <%= @time_2.student_time.chomp("+0000")%>~<%= @time_2.student_time_.chomp("+0000")%></small></span>
-                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_2.gda_time.chomp("+0000")%>~<%= @time_2.gda_time_.chomp("+0000")%></small></span>
+                          <span class="pull-left"><small>학부생 신청기간: <%= @time_2.student_time.chomp("+0900")%>~<%= @time_2.student_time_.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_2.gda_time.chomp("+0900")%>~<%= @time_2.gda_time_.chomp("+0900")%></small></span>
                         <% else %>
                           <span class="pull-left">신청하기</span>
                         <% end %>
@@ -138,8 +138,8 @@
                 </div>
                     <div class="panel-footer">
                         <% if current_user.identity != "3" %>
-                          <span class="pull-left"><small>학부생 신청기간: <%= @time_3.student_time.chomp("+0000")%>~<%= @time_3.student_time_.chomp("+0000")%></small></span>
-                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_3.gda_time.chomp("+0000")%>~<%= @time_3.gda_time_.chomp("+0000")%></small></span>
+                          <span class="pull-left"><small>학부생 신청기간: <%= @time_3.student_time.chomp("+0900")%>~<%= @time_3.student_time_.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_3.gda_time.chomp("+0900")%>~<%= @time_3.gda_time_.chomp("+0900")%></small></span>
                         <% else %>
                           <span class="pull-left">신청하기</span>
                         <% end %>
@@ -187,8 +187,8 @@
                 </div>
                     <div class="panel-footer">
                         <% if current_user.identity != "3" %>
-                          <span class="pull-left"><small>학부생 신청기간: <%= @time_4.student_time.chomp("+0000")%>~<%= @time_4.student_time_.chomp("+0000")%></small></span>
-                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_4.gda_time.chomp("+0000")%>~<%= @time_4.gda_time_.chomp("+0000")%></small></span>
+                          <span class="pull-left"><small>학부생 신청기간: <%= @time_4.student_time.chomp("+0900")%>~<%= @time_4.student_time_.chomp("+0900")%></small></span>
+                          <span class="pull-left"><small>대학원생 신청기간: <%= @time_4.gda_time.chomp("+0900")%>~<%= @time_4.gda_time_.chomp("+0900")%></small></span>
                         <% else %>
                           <span class="pull-left">신청하기</span>
                         <% end %>

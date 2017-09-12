@@ -18,13 +18,13 @@ module BoxHelper
 
   def apply_range(input)
     if input == "응용화학과"
-      return  ("#{Limit.find(1).student_time.chomp("+0000")} ~ #{Limit.find(1).student_time_.chomp("+0000")}")
+      return  ("#{Limit.find(1).student_time.chomp("+0900")} ~ #{Limit.find(1).student_time_.chomp("+0900")}")
     elsif input == "산업경영공학과"
-      return  ("#{Limit.find(3).student_time.chomp("+0000")} ~ #{Limit.find(3).student_time_.chomp("+0000")}")
+      return  ("#{Limit.find(3).student_time.chomp("+0900")} ~ #{Limit.find(3).student_time_.chomp("+0900")}")
     elsif ["응용화학과", "응용수학과", "응용물리학과"].include? input
-      return  ("#{Limit.find(2).student_time.chomp("+0000")} ~ #{Limit.find(2).student_time_.chomp("+0000")}")
+      return  ("#{Limit.find(2).student_time.chomp("+0900")} ~ #{Limit.find(2).student_time_.chomp("+0900")}")
     else
-      return  ("#{Limit.find(4).student_time.chomp("+0000")} ~ #{Limit.find(4).student_time_.chomp("+0000")}")
+      return  ("#{Limit.find(4).student_time.chomp("+0900")} ~ #{Limit.find(4).student_time_.chomp("+0900")}")
     end
   end
 
