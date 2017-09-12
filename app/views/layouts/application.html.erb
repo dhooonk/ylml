@@ -149,6 +149,12 @@
     <%= flash[:warning] %>
   </div>
 <% end %>
+<% if flash[:info] %>
+  <div class="alert alert-info">
+    <%= flash[:info] %>
+  </div>
+<% end %>
+
 <% if current_page?(root_path)%>
     <%= yield %>
     <% else %>

@@ -62,7 +62,7 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= form_tag  tempusers_accept_path, method: "post", data: {confirm: "(주의요망) #{i.name}님을 회원전환 하시겠습니까?"}  do %>
+                    <%= form_tag  tempusers_accept_path, method: "post", data: {confirm: "#{i.stuN}님을 회원등록합니다. 신청 정보를 다시 한번 확인해 주시고 등록해주세요."}  do %>
                       <input type="hidden" name="name" value="<%= i.name %>">
                       <input type="hidden" name="major" value="<%= i.major %>">
                       <input type="hidden" name="stuN" value="<%= i.stuN %>">
