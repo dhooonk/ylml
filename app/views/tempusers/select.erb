@@ -19,70 +19,72 @@
             <li><a href="https://docs.google.com/spreadsheets/u/0/" target="_blank" type="button" class="btn btn-default"> Google Sheets </a></li>
           </ul>
         </div>
-        <table class="table table-condensed">
-          <thead>
-            <tr>
-              <th class="admin_index"><strong>&nbsp&nbsp&nbsp이름&nbsp&nbsp&nbsp</strong></th>
-              <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp학과&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
-              <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
-              <th class="admin_index"><strong>&nbsp&nbsp&nbsp권한&nbsp&nbsp&nbsp</strong></th>
-              <th class="admin_index"><strong>&nbsp납부여부&nbsp</strong></th>
-              <th class="admin_index"><strong>&nbsp회원 전환&nbsp</strong></th>
-              <th class="admin_index"><strong>&nbsp삭제&nbsp</strong></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @tempusers.each do |i| %>
-              <% if User.find_by(stuN: i.stuN).nil? %>
-                <tr>
-                  <td>
-                    <%= i.name %>
-                  </td>
-                  <td>
-                    <%= i.major %>
-                  </td>
+        <div class="table-responsive">
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th class="admin_index"><strong>&nbsp&nbsp&nbsp이름&nbsp&nbsp&nbsp</strong></th>
+                <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp학과&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
+                <th class="admin_index"><strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp학번&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</strong></th>
+                <th class="admin_index"><strong>&nbsp&nbsp&nbsp권한&nbsp&nbsp&nbsp</strong></th>
+                <th class="admin_index"><strong>&nbsp납부여부&nbsp</strong></th>
+                <th class="admin_index"><strong>&nbsp회원 전환&nbsp</strong></th>
+                <th class="admin_index"><strong>&nbsp삭제&nbsp</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tempusers.each do |i| %>
+                <% if User.find_by(stuN: i.stuN).nil? %>
+                  <tr>
                     <td>
-                      <%= i.stuN %>
+                      <%= i.name %>
                     </td>
-                  <td>
-                    <% if i.identity == "1" %>
-                      학부생
-                    <% elsif i.identity == "2" %>
-                      대학원생
-                    <% elsif i.identity == "3" %>
-                      교수
-                    <% else %>
-                      관리자
-                    <% end %>
-                  </td>
-                  <td>
-                    <% if i.feeOfSch == true %>
-                      납부
-                    <% else %>
-                      미납
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= form_tag  tempusers_accept_path, method: "post", data: {confirm: "#{i.stuN}님을 회원등록합니다. 신청 정보를 다시 한번 확인해 주시고 등록해주세요."}  do %>
-                      <input type="hidden" name="name" value="<%= i.name %>">
-                      <input type="hidden" name="major" value="<%= i.major %>">
-                      <input type="hidden" name="stuN" value="<%= i.stuN %>">
-                      <input type="hidden" name="identity" value="<%= i.identity %>">
-                      <input type="hidden" name="feeOfSch" value="<%= i.feeOfSch %>">
-                      <button type="submit" class="btn btn-default">전환</button>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= form_tag tempusers_destroy_path, method: "delete", data: {confirm: "#{i.stuN}님을 삭제합니다. 신청 정보를 다시 한번 확인해 주시고 삭제해주세요."} do %>
-                      <input type="hidden" name="id" value="<%= i.id %>">
-                      <button type="submit" class="btn btn-default">삭제</button>
-                    <% end %>
-                  </td>
-                </tr>
+                    <td>
+                      <%= i.major %>
+                    </td>
+                      <td>
+                        <%= i.stuN %>
+                      </td>
+                    <td>
+                      <% if i.identity == "1" %>
+                        학부생
+                      <% elsif i.identity == "2" %>
+                        대학원생
+                      <% elsif i.identity == "3" %>
+                        교수
+                      <% else %>
+                        관리자
+                      <% end %>
+                    </td>
+                    <td>
+                      <% if i.feeOfSch == true %>
+                        납부
+                      <% else %>
+                        미납
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= form_tag  tempusers_accept_path, method: "post", data: {confirm: "#{i.stuN}님을 회원등록합니다. 신청 정보를 다시 한번 확인해 주시고 등록해주세요."}  do %>
+                        <input type="hidden" name="name" value="<%= i.name %>">
+                        <input type="hidden" name="major" value="<%= i.major %>">
+                        <input type="hidden" name="stuN" value="<%= i.stuN %>">
+                        <input type="hidden" name="identity" value="<%= i.identity %>">
+                        <input type="hidden" name="feeOfSch" value="<%= i.feeOfSch %>">
+                        <button type="submit" class="btn btn-default">전환</button>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= form_tag tempusers_destroy_path, method: "delete", data: {confirm: "#{i.stuN}님을 삭제합니다. 신청 정보를 다시 한번 확인해 주시고 삭제해주세요."} do %>
+                        <input type="hidden" name="id" value="<%= i.id %>">
+                        <button type="submit" class="btn btn-default">삭제</button>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div><!-- container -->
   </div><!-- col -->
