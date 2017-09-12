@@ -15,7 +15,7 @@
           <ul class="dropdown-menu">
             <li><a href="/tempusers/index" type="button" class="btn btn-default"> 기본 양식 </a></li>
             <li><a href="/tempusers/indexE" type="button" class="btn btn-default"> 엑셀 양식 </a></li>
-            <li><a href="/tempusers/select" type="button" class="btn btn-default"> 개별 전환 </a></li>
+            <li><a href="/tempusers/select" type="button" class="btn btn-default"> 개별 관리 </a></li>
             <li><a href="https://docs.google.com/spreadsheets/u/0/" target="_blank" type="button" class="btn btn-default"> Google Sheets </a></li>
           </ul>
         </div>
@@ -28,6 +28,7 @@
               <th class="admin_index"><strong>&nbsp&nbsp&nbsp권한&nbsp&nbsp&nbsp</strong></th>
               <th class="admin_index"><strong>&nbsp납부여부&nbsp</strong></th>
               <th class="admin_index"><strong>&nbsp회원 전환&nbsp</strong></th>
+              <th class="admin_index"><strong>&nbsp삭제&nbsp</strong></th>
             </tr>
           </thead>
           <tbody>
@@ -69,6 +70,12 @@
                       <input type="hidden" name="identity" value="<%= i.identity %>">
                       <input type="hidden" name="feeOfSch" value="<%= i.feeOfSch %>">
                       <button type="submit" class="btn btn-default">전환</button>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= form_tag tempusers_destroy_path, method: "delete", data: {confirm: "#{i.stuN}님을 삭제합니다. 신청 정보를 다시 한번 확인해 주시고 삭제해주세요."} do %>
+                      <input type="hidden" name="id" value="<%= i.id %>">
+                      <button type="submit" class="btn btn-default">삭제</button>
                     <% end %>
                   </td>
                 </tr>

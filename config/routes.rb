@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     post '/tempusers/create' => 'tempusers#create'
     get '/tempusers/index' => 'tempusers#index'
     get '/tempusers/indexE' => 'tempusers#indexE'
+    delete '/tempusers/destroy' => 'tempusers#destroy'
 
     resources :csv, only: [:index, :create] do
       collection { post :import }

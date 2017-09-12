@@ -88,5 +88,15 @@ class TempusersController < ApplicationController
         flash[:warning] = "회원정보 등록이 실패 했습니다."
       end
     end
-
+    def destroy
+      tempuser = Tempuser.find(params[:id])
+      if user_major?.include? tempuser.major
+        tempuser.destroy
+        flash[:warning] = "가입신청 정보가 삭제 되었습니다."
+        redirect_to tempusers_select_path, method: "get"
+      else
+        flash[:warning] = "해당 권한이 없습니다."
+        redirect_to tempusers_select_path, method: "get"
+      end
+    end
 end
